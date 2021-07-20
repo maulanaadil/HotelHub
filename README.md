@@ -2,7 +2,11 @@
 # Welcome to HotelHub
 Project untuk memenuhi tugas besar Pemograman Visual GUI.
 
+## Rule
+Use JDK Version 14 or Under
+
 ## Guide
+Reccomend Tool Use Netbeans
 Once you've established working in your repo, you should follow these steps when starting to work each time in the repo:
 
 - Update your local repo from the central repo (**git pull origin master**).
