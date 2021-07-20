@@ -6,7 +6,7 @@ Project untuk memenuhi tugas besar Pemograman Visual GUI.
 Use JDK Version 14 or Below
 
 ## Guide
-Reccomend Tool Use Netbeans
+Recommend Tool Use Netbeans
 Once you've established working in your repo, you should follow these steps when starting to work each time in the repo:
 
 - Update your local repo from the central repo (**git pull origin master**).
