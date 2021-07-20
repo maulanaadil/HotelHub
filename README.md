@@ -3,7 +3,7 @@
 Project untuk memenuhi tugas besar Pemograman Visual GUI.
 
 ## Rule
-Use JDK Version 14 or Under
+Use JDK Version 14 or Below
 
 ## Guide
 Reccomend Tool Use Netbeans
