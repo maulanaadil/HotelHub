@@ -118,6 +118,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data Reservasi"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuServiceDataReservasiActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -218,7 +221,7 @@
     <Container class="javax.swing.JDesktopPane" name="mainPanel">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xd;&#xa;&#x9;public void paintComponent(Graphics g) {&#xd;&#xa;&#x9;&#x9;g.drawImage(img ,0 ,0 ,getWidth(), getHeight(), this);&#xd;&#xa;&#x9;}&#xd;&#xa;}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;assets/kopi.jpg&quot;));&#xd;&#xa;Image img = icon.getImage();"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;assets/hotel.jpg&quot;));&#xd;&#xa;Image img = icon.getImage();"/>
       </AuxValues>
 
       <Layout>

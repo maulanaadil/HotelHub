@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import service.Pegawai;
 import service.Pembayaran;
+import service.Reservasi;
 import service.Ruangan;
 import service.Tamu;
 
@@ -26,7 +27,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("assets/kopi.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("assets/hotel.jpg"));
         Image img = icon.getImage();
         mainPanel = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g) {
@@ -149,6 +150,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         menuServiceDataReservasi.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         menuServiceDataReservasi.setText("Data Reservasi");
+        menuServiceDataReservasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuServiceDataReservasiActionPerformed(evt);
+            }
+        });
         menuService.add(menuServiceDataReservasi);
 
         jMenuBar1.add(menuService);
@@ -313,6 +319,21 @@ public class MainFrame extends javax.swing.JFrame {
         tamu.setIconifiable(true);
         tamu.setClosable(true);
     }//GEN-LAST:event_menuServiceDataTamuActionPerformed
+
+    private void menuServiceDataReservasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataReservasiActionPerformed
+        // TODO add your handling code here:
+        
+        Reservasi reservasi = new Reservasi();
+        Dimension layarUtama = this.getSize();
+        Dimension layarReservasi = reservasi.getSize();
+        
+        reservasi.setLocation(layarUtama.width/2 - layarReservasi.width/2, layarUtama.height/2-layarReservasi.height/2);
+        
+        mainPanel.add(reservasi);
+        reservasi.setVisible(true);
+        reservasi.setIconifiable(true);
+        reservasi.setClosable(true);
+    }//GEN-LAST:event_menuServiceDataReservasiActionPerformed
 
 
     public static void main(String args[]) {
