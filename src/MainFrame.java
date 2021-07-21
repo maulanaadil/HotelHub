@@ -50,6 +50,8 @@ public class MainFrame extends javax.swing.JFrame {
         menuServiceDataTamu = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         menuServiceDataReservasi = new javax.swing.JMenuItem();
+        menuPengaturan1 = new javax.swing.JMenu();
+        menuLaporan = new javax.swing.JMenuItem();
         menuPengaturan = new javax.swing.JMenu();
         menuPengaturanAboutUs = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
@@ -151,6 +153,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(menuService);
 
+        menuPengaturan1.setText("Laporan");
+        menuPengaturan1.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+
+        menuLaporan.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
+        menuLaporan.setText("Laporan Harian");
+        menuPengaturan1.add(menuLaporan);
+
+        jMenuBar1.add(menuPengaturan1);
+
         menuPengaturan.setText("Pengaturan");
         menuPengaturan.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
 
@@ -193,9 +204,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void menuFormDaftarTamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormDaftarTamuActionPerformed
         // TODO add your handling code here:
-        mainPanel.removeAll();
-        mainPanel.repaint();
-        mainPanel.revalidate();
         
         FormPendaftaranTamu formPendaftaranTamu = new FormPendaftaranTamu();
         Dimension layarUtama = this.getSize();
@@ -217,9 +225,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void menuFormReservasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormReservasiActionPerformed
         // TODO add your handling code here:
-        mainPanel.removeAll();
-        mainPanel.repaint();
-        mainPanel.revalidate();
         
         FormReservasi formReservasi = new FormReservasi();
         Dimension layarUtama = this.getSize();
@@ -231,17 +236,10 @@ public class MainFrame extends javax.swing.JFrame {
         formReservasi.setVisible(true);
         formReservasi.setIconifiable(true);
         formReservasi.setClosable(true);
-        
-        
-        
-        
     }//GEN-LAST:event_menuFormReservasiActionPerformed
 
     private void menuFormPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormPembayaranActionPerformed
         // TODO add your handling code here:
-         mainPanel.removeAll();
-        mainPanel.repaint();
-        mainPanel.revalidate();
         
         FormPembayaran formPembayaran = new FormPembayaran();
         Dimension layarUtama = this.getSize();
@@ -258,7 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void menuServiceDataPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataPegawaiActionPerformed
         // TODO add your handling code here:
-        
+
         Pegawai pegawai = new Pegawai();
         Dimension layarUtama = this.getSize();
         Dimension layarPegawai = pegawai.getSize();
@@ -273,7 +271,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void menuServiceDataRuanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataRuanganActionPerformed
         // TODO add your handling code here:
-        
+
         Ruangan ruangan = new Ruangan();
         Dimension layarUtama = this.getSize();
         Dimension layarRuangan = ruangan.getSize();
@@ -346,7 +344,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuFormDaftarTamu;
     private javax.swing.JMenuItem menuFormPembayaran;
     private javax.swing.JMenuItem menuFormReservasi;
+    private javax.swing.JMenuItem menuLaporan;
     private javax.swing.JMenu menuPengaturan;
+    private javax.swing.JMenu menuPengaturan1;
     private javax.swing.JMenuItem menuPengaturanAboutUs;
     private javax.swing.JMenuItem menuPengaturanKeluar;
     private javax.swing.JMenu menuService;

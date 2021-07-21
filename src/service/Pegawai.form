@@ -268,15 +268,14 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_idpegawai">
+        <Component class="javax.swing.JTextField" name="tf_idPegawai">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_idpegawaiActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_idpegawaiKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_idPegawaiKeyPressed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -449,7 +448,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="tf_caripegawai" min="-2" pref="430" max="-2" attributes="0"/>
+                                  <Component id="tf_cariPegawai" min="-2" pref="430" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="btn_cari" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -458,20 +457,20 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tv_rincian_data_pegawai" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_rincianDataPegawai" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="tv_rincian_nama" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tv_rincian_id_pegawaii" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tv_rincian_jk" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tv_rincian_alamat" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianNama" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianIdPegawai" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianJk" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianAlamat" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tf_idpegawaiupdate" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <Component id="tf_namaupdate" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="tf_alamatupdate" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <Component id="cb_jkupdate" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="tf_idPegawaiUpdate" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                                      <Component id="tf_namaUpdate" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="tf_alamatUpdate" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="cb_jkUpdate" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -494,7 +493,7 @@
                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_caripegawai" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_cariPegawai" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_cari" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -505,26 +504,26 @@
                       <Component id="btn_update" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tv_rincian_data_pegawai" min="-2" max="-2" attributes="0"/>
+                  <Component id="tv_rincianDataPegawai" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_id_pegawaii" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_idpegawaiupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianIdPegawai" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_idPegawaiUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_nama" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_namaupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianNama" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_namaUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_jk" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_jkupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianJk" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_jkUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_alamat" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_alamatupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_alamatUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
@@ -580,7 +579,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
               <Events>
@@ -589,14 +588,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="tf_caripegawai">
+        <Component class="javax.swing.JTextField" name="tf_cariPegawai">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_caripegawaiKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_cariPegawaiKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_cari">
@@ -682,7 +681,7 @@
             <Property name="text" type="java.lang.String" value="Ketik Nama Pegawai untuk Mencari Data Pegawai:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_data_pegawai">
+        <Component class="javax.swing.JLabel" name="tv_rincianDataPegawai">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -690,7 +689,7 @@
             <Property name="text" type="java.lang.String" value="Rincian Data Pegawai"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_id_pegawaii">
+        <Component class="javax.swing.JLabel" name="tv_rincianIdPegawai">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -698,7 +697,7 @@
             <Property name="text" type="java.lang.String" value="ID Pegawai"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_nama">
+        <Component class="javax.swing.JLabel" name="tv_rincianNama">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -706,7 +705,7 @@
             <Property name="text" type="java.lang.String" value="Nama"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_jk">
+        <Component class="javax.swing.JLabel" name="tv_rincianJk">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -714,7 +713,7 @@
             <Property name="text" type="java.lang.String" value="Jenis Kelamin"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_alamat">
+        <Component class="javax.swing.JLabel" name="tv_rincianAlamat">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -722,14 +721,14 @@
             <Property name="text" type="java.lang.String" value="Alamat"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_namaupdate">
+        <Component class="javax.swing.JTextField" name="tf_namaUpdate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_idpegawaiupdate">
+        <Component class="javax.swing.JTextField" name="tf_idPegawaiUpdate">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f6" red="ea" type="rgb"/>
@@ -739,14 +738,14 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_alamatupdate">
+        <Component class="javax.swing.JTextField" name="tf_alamatUpdate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_jkupdate">
+        <Component class="javax.swing.JComboBox" name="cb_jkUpdate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand Medium" size="12" style="0"/>

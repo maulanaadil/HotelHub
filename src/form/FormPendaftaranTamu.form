@@ -36,11 +36,11 @@
               <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                      <Component id="tf_idtamu" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
+                      <Component id="tf_idTamu" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
                       <Component id="tf_nama" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
                   </Group>
                   <Component id="tf_alamat" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
-                  <Component id="tf_notelepon" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
+                  <Component id="tf_noTelepon" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -60,7 +60,7 @@
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_idtamu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tf_idTamu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -75,7 +75,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_notelepon" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tf_noTelepon" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -171,14 +171,14 @@
         <Property name="text" type="java.lang.String" value="ID Tamu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_idtamu">
+    <Component class="javax.swing.JTextField" name="tf_idTamu">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Quicksand SemiBold" size="12" style="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_idtamuKeyPressed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_idTamuKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -219,14 +219,14 @@
         <Property name="text" type="java.lang.String" value="No Telepon"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_notelepon">
+    <Component class="javax.swing.JTextField" name="tf_noTelepon">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Quicksand Medium" size="12" style="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_noteleponKeyTyped"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_noTeleponKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_reset">

@@ -45,9 +45,9 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="tf_tamu" max="32767" attributes="0"/>
                           <Component id="cb_nama" pref="406" max="32767" attributes="0"/>
-                          <Component id="date_checkin" max="32767" attributes="0"/>
-                          <Component id="date_checkout" max="32767" attributes="0"/>
-                          <Component id="cb_idkamar" alignment="0" pref="406" max="32767" attributes="0"/>
+                          <Component id="date_checkIn" max="32767" attributes="0"/>
+                          <Component id="date_checkOut" max="32767" attributes="0"/>
+                          <Component id="cb_idKamar" alignment="0" pref="406" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -72,7 +72,7 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="date_checkin" min="-2" max="-2" attributes="0"/>
+                  <Component id="date_checkIn" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -80,11 +80,11 @@
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="jLabel7" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="date_checkout" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="date_checkOut" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cb_idkamar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cb_idKamar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -218,7 +218,7 @@
         <Property name="text" type="java.lang.String" value="ID Kamar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cb_idkamar">
+    <Component class="javax.swing.JComboBox" name="cb_idKamar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Quicksand Medium" size="14" style="0"/>
@@ -241,7 +241,7 @@
         <Property name="text" type="java.lang.String" value="Tanggal Check Out"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="date_checkin">
+    <Component class="com.toedter.calendar.JDateChooser" name="date_checkIn">
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -249,7 +249,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="date_checkout">
+    <Component class="com.toedter.calendar.JDateChooser" name="date_checkOut">
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

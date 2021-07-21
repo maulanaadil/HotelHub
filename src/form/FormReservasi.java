@@ -34,13 +34,10 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         try {
             Connection conn = (Connection) Config.configDB();
 
-            // Buka Query
             Statement state = conn.createStatement();
             
-            // Buat Query
             String sql = "SELECT nama FROM tamu ORDER BY id_tamu ASC";
             
-            // Eksekusi Query
             ResultSet rs = state.executeQuery(sql);
             
             while(rs.next()) {
@@ -67,7 +64,6 @@ public class FormReservasi extends javax.swing.JInternalFrame {
                 Object[] ob = new Object[1];
                 ob[0] = rs.getString("id_tamu");
                 
-                // set data ke textField
                 tf_tamu.setText((String) ob[0]);
             }
             rs.close();
@@ -82,19 +78,16 @@ public class FormReservasi extends javax.swing.JInternalFrame {
          try {
             Connection conn = (Connection) Config.configDB();
 
-            // Buka Query
             Statement state = conn.createStatement();
             
-            // Buat Query
             String sql = "SELECT id_room FROM room WHERE status = 'kosong' ORDER BY id_room ASC";
             
-            // Eksekusi Query
             ResultSet rs = state.executeQuery(sql);
             
             while(rs.next()) {
                 Object[] ob = new Object[1];
                 ob[0] = rs.getString("id_room");
-                cb_idkamar.addItem((String) ob[0]);
+                cb_idKamar.addItem((String) ob[0]);
             }
             rs.close();
             state.close();
@@ -108,7 +101,7 @@ public class FormReservasi extends javax.swing.JInternalFrame {
             Connection conn = (Connection) Config.configDB();
             
             Statement state = conn.createStatement();
-            String sql = "UPDATE room SET status = 'terisi' WHERE id_room='"+cb_idkamar.getSelectedItem()+"'";
+            String sql = "UPDATE room SET status = 'terisi' WHERE id_room='"+cb_idKamar.getSelectedItem()+"'";
             
             state.executeUpdate(sql);
        
@@ -125,10 +118,10 @@ public class FormReservasi extends javax.swing.JInternalFrame {
             
             Statement state = conn.createStatement();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String checkIn = sdf.format(date_checkin.getDate());
-            String checkOut = sdf.format(date_checkout.getDate());
+            String checkIn = sdf.format(date_checkIn.getDate());
+            String checkOut = sdf.format(date_checkOut.getDate());
             
-            String sql = "INSERT INTO reservasi(id_tamu,  id_room, id_pegawai, check_in, check_out) VALUES('"+tf_tamu.getText() +"' , '"+ cb_idkamar.getSelectedItem() +"', 'P001', '" + checkIn + "', '"+ checkOut +"')";
+            String sql = "INSERT INTO reservasi(id_tamu,  id_room, id_pegawai, check_in, check_out) VALUES('"+tf_tamu.getText() +"' , '"+ cb_idKamar.getSelectedItem() +"', 'P001', '" + checkIn + "', '"+ checkOut +"')";
             state.executeUpdate(sql);
             updateStatusKamar();
             JOptionPane.showMessageDialog(null, "Data Success Added!");
@@ -142,9 +135,9 @@ public class FormReservasi extends javax.swing.JInternalFrame {
     public void clearComponents() {
         cb_nama.setSelectedIndex(0);
         tf_tamu.setText("");
-        date_checkin.setDate(null);
-        date_checkout.setDate(null);
-        cb_idkamar.setSelectedIndex(0);
+        date_checkIn.setDate(null);
+        date_checkOut.setDate(null);
+        cb_idKamar.setSelectedIndex(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -159,10 +152,10 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         cb_nama = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cb_idkamar = new javax.swing.JComboBox<>();
+        cb_idKamar = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        date_checkin = new com.toedter.calendar.JDateChooser();
-        date_checkout = new com.toedter.calendar.JDateChooser();
+        date_checkIn = new com.toedter.calendar.JDateChooser();
+        date_checkOut = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         tf_tamu = new javax.swing.JTextField();
         btn_reset = new javax.swing.JButton();
@@ -229,17 +222,17 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel6.setText("ID Kamar");
 
-        cb_idkamar.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
-        cb_idkamar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Kamar" }));
+        cb_idKamar.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        cb_idKamar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Kamar" }));
 
         jLabel7.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel7.setText("Tanggal Check Out");
 
-        date_checkin.setDateFormatString("yyyy-MM-dd");
-        date_checkin.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        date_checkIn.setDateFormatString("yyyy-MM-dd");
+        date_checkIn.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
 
-        date_checkout.setDateFormatString("yyyy-MM-dd");
-        date_checkout.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        date_checkOut.setDateFormatString("yyyy-MM-dd");
+        date_checkOut.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel8.setText("ID Tamu");
@@ -285,9 +278,9 @@ public class FormReservasi extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tf_tamu)
                             .addComponent(cb_nama, 0, 406, Short.MAX_VALUE)
-                            .addComponent(date_checkin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(date_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_idkamar, 0, 406, Short.MAX_VALUE))))
+                            .addComponent(date_checkIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(date_checkOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_idKamar, 0, 406, Short.MAX_VALUE))))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -305,16 +298,16 @@ public class FormReservasi extends javax.swing.JInternalFrame {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(date_checkin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(date_checkIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(date_checkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(date_checkOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_idkamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_idKamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -348,10 +341,10 @@ public class FormReservasi extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_submit;
-    private javax.swing.JComboBox<String> cb_idkamar;
+    private javax.swing.JComboBox<String> cb_idKamar;
     private javax.swing.JComboBox<String> cb_nama;
-    private com.toedter.calendar.JDateChooser date_checkin;
-    private com.toedter.calendar.JDateChooser date_checkout;
+    private com.toedter.calendar.JDateChooser date_checkIn;
+    private com.toedter.calendar.JDateChooser date_checkOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

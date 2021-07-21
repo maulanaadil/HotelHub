@@ -50,9 +50,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                       <Component id="cb_nama" pref="350" max="32767" attributes="0"/>
-                      <Component id="tf_idtamu" max="32767" attributes="0"/>
+                      <Component id="tf_idTamu" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="tv_tipekamar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tv_tipeKamar" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="tv_harga" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="tv_pajak" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -80,7 +80,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="tv_rp" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tv_totalharga" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_totalHarga" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -102,14 +102,14 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_idtamu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tf_idTamu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tv_tipekamar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tv_tipeKamar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -126,7 +126,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tv_totalharga" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tv_totalHarga" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tv_rp" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -249,7 +249,7 @@
         <Property name="text" type="java.lang.String" value="ID Tamu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_idtamu">
+    <Component class="javax.swing.JTextField" name="tf_idTamu">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -288,7 +288,7 @@
         <Property name="text" type="java.lang.String" value="Pajak"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="tv_tipekamar">
+    <Component class="javax.swing.JLabel" name="tv_tipeKamar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Quicksand Medium" size="14" style="1"/>
@@ -304,7 +304,7 @@
         <Property name="text" type="java.lang.String" value="Rp. 0.00"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="tv_totalharga">
+    <Component class="javax.swing.JLabel" name="tv_totalHarga">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Quicksand Medium" size="14" style="1"/>

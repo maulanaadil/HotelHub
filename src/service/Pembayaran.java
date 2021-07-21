@@ -16,7 +16,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         setColor(btn_pembayaran);
         showHint();
         showDataPembayaran();
-        tf_temp_data.setVisible(false);
+        tf_tempData.setVisible(false);
     }
     
     void setColor(JPanel panel) {
@@ -24,7 +24,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
     }
     
      public void showHint() {
-        tf_caripembayaran.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+        tf_cariPembayaran.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
     }
      
      public void showDataPembayaran() {
@@ -61,7 +61,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
      
      public void cariData() {
         DefaultTableModel model = new DefaultTableModel();
-        String cari = tf_caripembayaran.getText();
+        String cari = tf_cariPembayaran.getText();
         
         model.addColumn("ID Pembayaran");
         model.addColumn("Total Harga");
@@ -76,10 +76,9 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT id_pembayaran, total_harga, tanggal, tamu.nama AS 'dibayar' FROM pembayaran INNER JOIN tamu ON pembayaran.id_tamu = tamu.id_tamu WHERE tamu.nama LIKE '%"+ tf_caripembayaran.getText() +"%'";
+            String sql = "SELECT id_pembayaran, total_harga, tanggal, tamu.nama AS 'dibayar' FROM pembayaran INNER JOIN tamu ON pembayaran.id_tamu = tamu.id_tamu WHERE tamu.nama LIKE '%"+ tf_cariPembayaran.getText() +"%'";
             
             ResultSet res = state.executeQuery(sql);
-            
                     
             while (res.next()) {
                 model.addRow(new Object [] {
@@ -111,14 +110,14 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         panel_data_pembayaran = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_pembayaran = new javax.swing.JTable();
-        tf_caripembayaran = new javax.swing.JTextField();
+        tf_cariPembayaran = new javax.swing.JTextField();
         btn_cari = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        tf_temp_data = new javax.swing.JTextField();
+        tf_tempData = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(220, 228, 228));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -227,6 +226,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
             }
         ));
         tb_pembayaran.setGridColor(new java.awt.Color(255, 255, 255));
+        tb_pembayaran.getTableHeader().setReorderingAllowed(false);
         tb_pembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_pembayaranMouseClicked(evt);
@@ -234,10 +234,10 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tb_pembayaran);
 
-        tf_caripembayaran.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_caripembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
+        tf_cariPembayaran.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_cariPembayaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_caripembayaranKeyPressed(evt);
+                tf_cariPembayaranKeyPressed(evt);
             }
         });
 
@@ -302,7 +302,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
                 .addGroup(panel_data_pembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addGroup(panel_data_pembayaranLayout.createSequentialGroup()
-                        .addComponent(tf_caripembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_cariPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_cari)))
                 .addContainerGap(118, Short.MAX_VALUE))
@@ -310,7 +310,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(panel_data_pembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_data_pembayaranLayout.createSequentialGroup()
-                        .addComponent(tf_temp_data, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_tempData, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_hapus)
                         .addGap(57, 57, 57))
@@ -326,7 +326,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_data_pembayaranLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_caripembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_cariPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cari))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,7 +336,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
                         .addComponent(btn_hapus))
                     .addGroup(panel_data_pembayaranLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(tf_temp_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tf_tempData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(229, Short.MAX_VALUE))
         );
 
@@ -355,7 +355,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         int opsi = JOptionPane.showConfirmDialog(null, "Benarkah anda ingin menghapus Data?");
         if (opsi == JOptionPane.YES_OPTION)  {
             try {
-                String sql = "DELETE FROM pembayaran WHERE id_pembayaran='"+ tf_temp_data.getText() +"'";
+                String sql = "DELETE FROM pembayaran WHERE id_pembayaran='"+ tf_tempData.getText() +"'";
                 Connection conn = (Connection)Config.configDB();
                 PreparedStatement pstm = conn.prepareStatement(sql);
                 pstm.execute();
@@ -376,23 +376,23 @@ public class Pembayaran extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btn_cariActionPerformed
 
-    private void tf_caripembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_caripembayaranKeyPressed
+    private void tf_cariPembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_cariPembayaranKeyPressed
         // TODO add your handling code here:
         cariData();
-        if(tf_caripembayaran.getText().trim().isEmpty()) {
+        if(tf_cariPembayaran.getText().trim().isEmpty()) {
             showDataPembayaran();
         }
 
-    }//GEN-LAST:event_tf_caripembayaranKeyPressed
+    }//GEN-LAST:event_tf_cariPembayaranKeyPressed
 
     private void tb_pembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_pembayaranMouseClicked
         // TODO add your handling code here:
         int baris = tb_pembayaran.rowAtPoint(evt.getPoint());
 
         String id = tb_pembayaran.getValueAt(baris, 0).toString();
-        tf_temp_data.setText(id);
-        tf_temp_data.setEditable(false);
-        tf_temp_data.setVisible(false);
+        tf_tempData.setText(id);
+        tf_tempData.setEditable(false);
+        tf_tempData.setVisible(false);
     }//GEN-LAST:event_tb_pembayaranMouseClicked
 
 
@@ -413,7 +413,7 @@ public class Pembayaran extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panel_data_pembayaran;
     private javax.swing.JPanel side_panel;
     private javax.swing.JTable tb_pembayaran;
-    private javax.swing.JTextField tf_caripembayaran;
-    private javax.swing.JTextField tf_temp_data;
+    private javax.swing.JTextField tf_cariPembayaran;
+    private javax.swing.JTextField tf_tempData;
     // End of variables declaration//GEN-END:variables
 }

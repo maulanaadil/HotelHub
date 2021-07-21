@@ -269,7 +269,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tf_cari_ruangan" min="-2" pref="430" max="-2" attributes="0"/>
+                                  <Component id="tf_cariRuangan" min="-2" pref="430" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="btn_cari" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -278,20 +278,20 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tv_rincian_data_ruangan" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_rincianDataRuangan" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="tv_rincian_harga" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tv_rincian_id_ruangan" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tv_rincian_jk" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tv_rincian_status" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianHarga" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianIdRuangan" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianJk" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tv_rincianStatus" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tf_rincian_idruangan" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <Component id="tf_rincian_harga" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="cb_rincian_tiperuangan" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="cb_rincian_status" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="tf_rincianIdRuangan" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                                      <Component id="tf_rincianHarga" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="cb_rincianTipeRuangan" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="cb_rincianStatus" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -314,7 +314,7 @@
                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_cari_ruangan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_cariRuangan" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_cari" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -325,26 +325,26 @@
                       <Component id="btn_update" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tv_rincian_data_ruangan" min="-2" max="-2" attributes="0"/>
+                  <Component id="tv_rincianDataRuangan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_id_ruangan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_rincian_idruangan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianIdRuangan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_rincianIdRuangan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_harga" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_rincian_harga" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianHarga" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_rincianHarga" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tv_rincian_jk" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_rincian_tiperuangan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianJk" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_rincianTipeRuangan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tv_rincian_status" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_rincian_status" min="-2" max="-2" attributes="0"/>
+                      <Component id="tv_rincianStatus" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_rincianStatus" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
@@ -400,7 +400,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
               <Events>
@@ -409,14 +409,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="tf_cari_ruangan">
+        <Component class="javax.swing.JTextField" name="tf_cariRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_cari_ruanganKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_cariRuanganKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_cari">
@@ -502,7 +502,7 @@
             <Property name="text" type="java.lang.String" value="Ketik Tipe Ruangan untuk Mencari Data Ruangan:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_data_ruangan">
+        <Component class="javax.swing.JLabel" name="tv_rincianDataRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -510,7 +510,7 @@
             <Property name="text" type="java.lang.String" value="Rincian Data Ruangan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_id_ruangan">
+        <Component class="javax.swing.JLabel" name="tv_rincianIdRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -518,7 +518,7 @@
             <Property name="text" type="java.lang.String" value="ID Ruangan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_harga">
+        <Component class="javax.swing.JLabel" name="tv_rincianHarga">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -526,7 +526,7 @@
             <Property name="text" type="java.lang.String" value="Harga"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_jk">
+        <Component class="javax.swing.JLabel" name="tv_rincianJk">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -534,7 +534,7 @@
             <Property name="text" type="java.lang.String" value="TIpe Ruangan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincian_status">
+        <Component class="javax.swing.JLabel" name="tv_rincianStatus">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
@@ -542,17 +542,17 @@
             <Property name="text" type="java.lang.String" value="Status"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_rincian_harga">
+        <Component class="javax.swing.JTextField" name="tf_rincianHarga">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_rincian_hargaKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_rincianHargaKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_rincian_idruangan">
+        <Component class="javax.swing.JTextField" name="tf_rincianIdRuangan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f6" red="ea" type="rgb"/>
@@ -562,7 +562,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_rincian_tiperuangan">
+        <Component class="javax.swing.JComboBox" name="cb_rincianTipeRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand Medium" size="12" style="0"/>
@@ -587,7 +587,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_updateActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_rincian_status">
+        <Component class="javax.swing.JComboBox" name="cb_rincianStatus">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand Medium" size="12" style="0"/>
@@ -634,14 +634,14 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_idruangan">
+        <Component class="javax.swing.JTextField" name="tf_idRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_idruanganKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_idRuanganKeyPressed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -690,7 +690,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_status_ruangan">
+        <Component class="javax.swing.JComboBox" name="cb_statusRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand Medium" size="12" style="0"/>
@@ -773,7 +773,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_tipe_ruangan">
+        <Component class="javax.swing.JComboBox" name="cb_tipeRuangan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand Medium" size="12" style="0"/>

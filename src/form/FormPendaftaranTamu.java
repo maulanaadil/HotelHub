@@ -23,7 +23,7 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
             
             Statement state = conn.createStatement();
             
-            String sql = "INSERT INTO tamu VALUES('"+ tf_idtamu.getText() +"' , '"+ tf_nama.getText() +"', '" + tf_alamat.getText() + "', '"+ tf_notelepon.getText() +"')";
+            String sql = "INSERT INTO tamu VALUES('"+ tf_idTamu.getText() +"' , '"+ tf_nama.getText() +"', '" + tf_alamat.getText() + "', '"+ tf_noTelepon.getText() +"')";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Success Added!");
             clearComponents();
@@ -34,18 +34,18 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
     }
     
     public void clearComponents() {
-        tf_idtamu.setText("");
+        tf_idTamu.setText("");
         tf_nama.setText("");
         tf_alamat.setText("");
-        tf_notelepon.setText("");
-        tf_notelepon.setBackground(Color.WHITE);
+        tf_noTelepon.setText("");
+        tf_noTelepon.setBackground(Color.WHITE);
     }
     
     public void showHint() {
-        tf_idtamu.setUI(new JTextFieldHintUI("Masukan ID Tamu..", Color.GRAY));
+        tf_idTamu.setUI(new JTextFieldHintUI("Masukan ID Tamu..", Color.GRAY));
         tf_nama.setUI(new JTextFieldHintUI("Masukan Nama..", Color.GRAY));
         tf_alamat.setUI(new JTextFieldHintUI("Masukan Alamat..", Color.GRAY));
-        tf_notelepon.setUI(new JTextFieldHintUI("Masukan Nomor Telepon..", Color.GRAY));
+        tf_noTelepon.setUI(new JTextFieldHintUI("Masukan Nomor Telepon..", Color.GRAY));
     }
    
     @SuppressWarnings("unchecked")
@@ -57,13 +57,13 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tf_idtamu = new javax.swing.JTextField();
+        tf_idTamu = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         tf_nama = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tf_alamat = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tf_notelepon = new javax.swing.JTextField();
+        tf_noTelepon = new javax.swing.JTextField();
         btn_reset = new javax.swing.JButton();
         btn_submit = new javax.swing.JButton();
 
@@ -112,10 +112,10 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel4.setText("ID Tamu");
 
-        tf_idtamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_idtamu.addKeyListener(new java.awt.event.KeyAdapter() {
+        tf_idTamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_idTamu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_idtamuKeyPressed(evt);
+                tf_idTamuKeyPressed(evt);
             }
         });
 
@@ -132,10 +132,10 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel7.setText("No Telepon");
 
-        tf_notelepon.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
-        tf_notelepon.addKeyListener(new java.awt.event.KeyAdapter() {
+        tf_noTelepon.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
+        tf_noTelepon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                tf_noteleponKeyTyped(evt);
+                tf_noTeleponKeyTyped(evt);
             }
         });
 
@@ -170,10 +170,10 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tf_idtamu, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_idTamu, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tf_nama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tf_alamat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_notelepon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_noTelepon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,7 +189,7 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(tf_idtamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_idTamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -201,7 +201,7 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tf_notelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_noTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_reset)
@@ -212,18 +212,22 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_noteleponKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_noteleponKeyTyped
+    private void tf_noTeleponKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_noTeleponKeyTyped
         // TODO add your handling code here:
-        String phoneNumber = tf_notelepon.getText();
-        
-        if (phoneNumber.matches("^[0-9]*$") && phoneNumber.length() == 11) {
-            tf_notelepon.setBackground(Color.GREEN);
-            btn_submit.setVisible(true);
+        String phoneNumber = tf_noTelepon.getText();
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            tf_noTelepon.setEditable(false);
         } else {
-            tf_notelepon.setBackground(Color.RED);
-            btn_submit.setVisible(false);
+            tf_noTelepon.setEditable(true);
         }
-    }//GEN-LAST:event_tf_noteleponKeyTyped
+        
+        if (phoneNumber.length() == 12 || phoneNumber.length() == 11) {
+            tf_noTelepon.setBackground(Color.GREEN);
+        } else {
+            tf_noTelepon.setBackground(Color.RED);
+        }
+    }//GEN-LAST:event_tf_noTeleponKeyTyped
 
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
         // TODO add your handling code here:
@@ -232,7 +236,7 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         // TODO add your handling code here:
-        if (tf_idtamu.getText().trim().isEmpty()) {
+        if (tf_idTamu.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Data ID Tamu Tidak Boleh Kosong");
         } else 
             if (tf_nama.getText().trim().isEmpty()) {
@@ -241,28 +245,28 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
                 if (tf_alamat.getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Data Alamat Tidak Boleh Kosong");
                 } else 
-                    if (tf_notelepon.getText().isEmpty()) {
+                    if (tf_noTelepon.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Data No Telepon Tidak Boleh Kosong");
                     } else {
                         addDataTamu();
                     }   
     }//GEN-LAST:event_btn_submitActionPerformed
 
-    private void tf_idtamuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_idtamuKeyPressed
+    private void tf_idTamuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_idTamuKeyPressed
         // TODO add your handling code here:
-        String idTamu = tf_idtamu.getText();
+        String idTamu = tf_idTamu.getText();
         
         int length = idTamu.length();
         if ( length < 4 ) {
-            tf_idtamu.setEditable(true);
+            tf_idTamu.setEditable(true);
         } else 
             if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE ) {
-                tf_idtamu.setEditable(true);
+                tf_idTamu.setEditable(true);
             } 
         else {
-            tf_idtamu.setEditable(false);
+            tf_idTamu.setEditable(false);
         }
-    }//GEN-LAST:event_tf_idtamuKeyPressed
+    }//GEN-LAST:event_tf_idTamuKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -277,8 +281,8 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tf_alamat;
-    private javax.swing.JTextField tf_idtamu;
+    private javax.swing.JTextField tf_idTamu;
     private javax.swing.JTextField tf_nama;
-    private javax.swing.JTextField tf_notelepon;
+    private javax.swing.JTextField tf_noTelepon;
     // End of variables declaration//GEN-END:variables
 }

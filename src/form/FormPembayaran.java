@@ -22,21 +22,18 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
     
     
     public void disableTextField() {
-        tf_idtamu.setEditable(false);
-        tf_idtamu.setBackground(new Color(234,246,248,255));
+        tf_idTamu.setEditable(false);
+        tf_idTamu.setBackground(new Color(234,246,248,255));
     }
     
     public void showNamaTamu() {
         try {
             Connection conn = (Connection) Config.configDB();
 
-            // Buka Query
             Statement state = conn.createStatement();
             
-            // Buat Query
             String sql = "SELECT nama FROM tamu ORDER BY id_tamu ASC";
             
-            // Eksekusi Query
             ResultSet rs = state.executeQuery(sql);
             
             while(rs.next()) {
@@ -63,8 +60,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                 Object[] ob = new Object[5];
                 ob[0] = rs.getString("id_tamu");
                 
-                // set data ke textField
-                tf_idtamu.setText((String) ob[0]);
+                tf_idTamu.setText((String) ob[0]);
             }
             showDataRincian();
             rs.close();
@@ -80,7 +76,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
             Connection conn = (Connection) Config.configDB();
             
             Statement state = conn.createStatement();
-            String sql = "SELECT * FROM room WHERE id_tamu='"+tf_idtamu.getText()+"'";
+            String sql = "SELECT * FROM room WHERE id_tamu='"+tf_idTamu.getText()+"'";
             
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()) {
@@ -88,8 +84,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                 ob[1] = rs.getString("tipe_room");
                 ob[2] = rs.getString("harga");
                 
-                // set data ke textField
-                tv_tipekamar.setText((String) ob[1]);
+                tv_tipeKamar.setText((String) ob[1]);
                 tv_harga.setText("Rp. " + (String) ob[2]);
                 
                 Double pajak = Double.parseDouble((String) ob[2]) * 0.01;
@@ -97,7 +92,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                 
                 Double temp = pajak + Double.parseDouble((String) ob[2]);
                 int totalHarga = (int)Math.round(temp);
-                tv_totalharga.setText(String.valueOf(totalHarga));
+                tv_totalHarga.setText(String.valueOf(totalHarga));
             }
             rs.close();
             state.close();
@@ -117,7 +112,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
             String tanggal = sdf.format(cal.getTime());
             
-            String sql = "INSERT INTO pembayaran(total_harga,  tanggal, id_tamu) VALUES('"+tv_totalharga.getText() +"' , '"+ tanggal +"', '" + tf_idtamu.getText() +"')";
+            String sql = "INSERT INTO pembayaran(total_harga,  tanggal, id_tamu) VALUES('"+tv_totalHarga.getText() +"' , '"+ tanggal +"', '" + tf_idTamu.getText() +"')";
             state.executeUpdate(sql);
             
             JOptionPane.showMessageDialog(null, "Data Success Added!");
@@ -140,14 +135,14 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         cb_nama = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        tf_idtamu = new javax.swing.JTextField();
+        tf_idTamu = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        tv_tipekamar = new javax.swing.JLabel();
+        tv_tipeKamar = new javax.swing.JLabel();
         tv_harga = new javax.swing.JLabel();
-        tv_totalharga = new javax.swing.JLabel();
+        tv_totalHarga = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         tv_pajak = new javax.swing.JLabel();
@@ -211,7 +206,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel5.setText("ID Tamu");
 
-        tf_idtamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_idTamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel6.setText("Rincian Reservasi");
@@ -225,14 +220,14 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel9.setText("Pajak");
 
-        tv_tipekamar.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
-        tv_tipekamar.setText("-");
+        tv_tipeKamar.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
+        tv_tipeKamar.setText("-");
 
         tv_harga.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         tv_harga.setText("Rp. 0.00");
 
-        tv_totalharga.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
-        tv_totalharga.setText("0.00");
+        tv_totalHarga.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
+        tv_totalHarga.setText("0.00");
 
         jLabel10.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel10.setText("Total Harga");
@@ -283,8 +278,8 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(cb_nama, 0, 350, Short.MAX_VALUE)
-                        .addComponent(tf_idtamu))
-                    .addComponent(tv_tipekamar, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tf_idTamu))
+                    .addComponent(tv_tipeKamar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tv_harga, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tv_pajak, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(203, 203, 203))
@@ -308,7 +303,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tv_rp)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tv_totalharga)
+                                .addComponent(tv_totalHarga)
                                 .addGap(23, 23, 23)))))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
@@ -323,13 +318,13 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(tf_idtamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_idTamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tv_tipekamar))
+                    .addComponent(tv_tipeKamar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -343,7 +338,7 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(tv_totalharga)
+                    .addComponent(tv_totalHarga)
                     .addComponent(tv_rp))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -390,20 +385,20 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField tf_idtamu;
+    private javax.swing.JTextField tf_idTamu;
     private javax.swing.JLabel tv_harga;
     private javax.swing.JLabel tv_pajak;
     private javax.swing.JLabel tv_rp;
-    private javax.swing.JLabel tv_tipekamar;
-    private javax.swing.JLabel tv_totalharga;
+    private javax.swing.JLabel tv_tipeKamar;
+    private javax.swing.JLabel tv_totalHarga;
     // End of variables declaration//GEN-END:variables
 
     private void clearComponents() {
             cb_nama.setSelectedIndex(0);
-            tf_idtamu.setText("");
-            tv_tipekamar.setText("-");
+            tf_idTamu.setText("");
+            tv_tipeKamar.setText("-");
             tv_harga.setText("Rp. 0.00");
             tv_pajak.setText("Rp. 0.00");
-            tv_totalharga.setText("0.00");
+            tv_totalHarga.setText("0.00");
     }
 }

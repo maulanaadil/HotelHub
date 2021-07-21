@@ -1,10 +1,143 @@
 
 package service;
 
+import database.Config;
+import form.JTextFieldHintUI;
+import java.awt.Color;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 public class Tamu extends javax.swing.JInternalFrame {
 
     public Tamu() {
         initComponents();
+        setColor(btn_tamu);
+        showHint();
+        showDataTamu();
+        setVisibleComponents(false);
+    }
+    
+    void setColor(JPanel panel) {
+        panel.setBackground(new Color(179, 201, 201));
+    }
+    
+    public void showHint() {
+        tf_cariTamu.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+    }
+    
+    public void showDataTamu() {
+         DefaultTableModel model = new DefaultTableModel();
+        
+        model.addColumn("No");
+        model.addColumn("ID Tamu");
+        model.addColumn("Nama");
+        model.addColumn("Alamat");
+        model.addColumn("No Telepon");
+        
+        int no=1;
+        try {
+            Connection conn = (Connection) Config.configDB();
+            Statement state = conn.createStatement();
+            String sql = "SELECT * FROM tamu ORDER BY id_tamu ASC";
+            
+            ResultSet res = state.executeQuery(sql);
+            
+                    
+            while (res.next()) {
+                
+                model.addRow(new Object [] {
+                    no++,
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4)
+                });
+                tb_tamu.setModel(model);
+            }
+            state.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error : " + e);
+        }
+     }
+    
+    public void cariData() {
+        DefaultTableModel model = new DefaultTableModel();
+        String cari = tf_cariTamu.getText();
+        
+        model.addColumn("No");
+        model.addColumn("ID Tamu");
+        model.addColumn("Nama");
+        model.addColumn("Alamat");
+        model.addColumn("No Telepon");
+        
+        int lengthRow = model.getRowCount();
+        for (int n=0; n<lengthRow; n++) {
+            model.removeRow(n);
+        }
+        
+        int no = 1;
+        try {
+            Connection conn = (Connection) Config.configDB();
+            Statement state = conn.createStatement();
+            String sql = "SELECT * FROM tamu WHERE nama LIKE '%"+ tf_cariTamu.getText() +"%'";
+            
+            ResultSet res = state.executeQuery(sql);
+                    
+            while (res.next()) {
+                model.addRow(new Object [] {
+                    no++, 
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4)
+                });
+                tb_tamu.setModel(model);
+            }
+            state.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error : " + e);
+        } 
+    }
+    
+    public void setVisibleComponents(Boolean b) {
+        btn_hapus.setVisible(b);
+        btn_update.setVisible(b);
+        tv_rincianDataTamu.setVisible(b);
+        tv_rincianIdTamu.setVisible(b);
+        tv_rincianNama.setVisible(b);
+        tv_rincianAlamat.setVisible(b);
+        tv_rincianNoTelepon.setVisible(b);
+        tf_rincianIdTamu.setVisible(b);
+        tf_rincianNama.setVisible(b);
+        tf_rincianAlamat.setVisible(b);
+        tf_rincianNoTelepon.setVisible(b);
+    }
+    
+    public void updateDataTamu() {
+        try {
+            String sql = "UPDATE tamu SET id_tamu='" + tf_rincianIdTamu.getText() + 
+                    "',nama='" + tf_rincianNama.getText() + 
+                    "',alamat='" + tf_rincianAlamat.getText() + 
+                    "',no_tlp='" + tf_rincianNoTelepon.getText() + 
+                    "' WHERE id_tamu='" + tf_rincianIdTamu.getText() + 
+                    "'";
+            Connection conn = (Connection)Config.configDB();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.execute();
+            JOptionPane.showMessageDialog(this, "Edit Data Berhasil");
+            showDataTamu();
+            setVisibleComponents(false);
+            
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -21,13 +154,23 @@ public class Tamu extends javax.swing.JInternalFrame {
         panel_data_tamu = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_tamu = new javax.swing.JTable();
-        tf_caritamu = new javax.swing.JTextField();
+        tf_cariTamu = new javax.swing.JTextField();
         btn_cari = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        btn_update = new javax.swing.JButton();
+        tv_rincianDataTamu = new javax.swing.JLabel();
+        tv_rincianIdTamu = new javax.swing.JLabel();
+        tf_rincianIdTamu = new javax.swing.JTextField();
+        tv_rincianNama = new javax.swing.JLabel();
+        tf_rincianNama = new javax.swing.JTextField();
+        tv_rincianAlamat = new javax.swing.JLabel();
+        tf_rincianAlamat = new javax.swing.JTextField();
+        tv_rincianNoTelepon = new javax.swing.JLabel();
+        tf_rincianNoTelepon = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(220, 228, 228));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,6 +282,7 @@ public class Tamu extends javax.swing.JInternalFrame {
             }
         ));
         tb_tamu.setGridColor(new java.awt.Color(255, 255, 255));
+        tb_tamu.getTableHeader().setReorderingAllowed(false);
         tb_tamu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_tamuMouseClicked(evt);
@@ -146,10 +290,10 @@ public class Tamu extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tb_tamu);
 
-        tf_caritamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_caritamu.addKeyListener(new java.awt.event.KeyAdapter() {
+        tf_cariTamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_cariTamu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_caritamuKeyPressed(evt);
+                tf_cariTamuKeyPressed(evt);
             }
         });
 
@@ -204,6 +348,52 @@ public class Tamu extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
         jLabel18.setText("Ketik Nama untuk Mencari Data Tamu:");
 
+        btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+
+        tv_rincianDataTamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianDataTamu.setText("Rincian Data Tamu");
+
+        tv_rincianIdTamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianIdTamu.setText("ID Tamu");
+
+        tf_rincianIdTamu.setBackground(new java.awt.Color(234, 246, 248));
+        tf_rincianIdTamu.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+
+        tv_rincianNama.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianNama.setText("Nama");
+
+        tf_rincianNama.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_rincianNama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_rincianNamaKeyPressed(evt);
+            }
+        });
+
+        tv_rincianAlamat.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianAlamat.setText("Alamat");
+
+        tf_rincianAlamat.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_rincianAlamat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_rincianAlamatKeyPressed(evt);
+            }
+        });
+
+        tv_rincianNoTelepon.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianNoTelepon.setText("No Telepon");
+
+        tf_rincianNoTelepon.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_rincianNoTelepon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tf_rincianNoTeleponKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_data_tamuLayout = new javax.swing.GroupLayout(panel_data_tamu);
         panel_data_tamu.setLayout(panel_data_tamuLayout);
         panel_data_tamuLayout.setHorizontalGroup(
@@ -214,20 +404,35 @@ public class Tamu extends javax.swing.JInternalFrame {
                 .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addGroup(panel_data_tamuLayout.createSequentialGroup()
-                        .addComponent(tf_caritamu, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_cariTamu, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_cari)))
                 .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(panel_data_tamuLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tv_rincianDataTamu)
                     .addGroup(panel_data_tamuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_hapus)
-                        .addGap(57, 57, 57))
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tv_rincianNama)
+                            .addComponent(tv_rincianIdTamu)
+                            .addComponent(tv_rincianAlamat)
+                            .addComponent(tv_rincianNoTelepon))
+                        .addGap(15, 15, 15)
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_rincianIdTamu, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_rincianNama, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_rincianAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_rincianNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_update)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_hapus)
+                .addGap(57, 57, 57))
         );
         panel_data_tamuLayout.setVerticalGroup(
             panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,13 +442,36 @@ public class Tamu extends javax.swing.JInternalFrame {
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_caritamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_cariTamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cari))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_hapus)
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_hapus)
+                            .addComponent(btn_update)))
+                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(tv_rincianDataTamu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tv_rincianIdTamu)
+                            .addComponent(tf_rincianIdTamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tv_rincianNama)
+                            .addComponent(tf_rincianNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tv_rincianAlamat)
+                            .addComponent(tf_rincianAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tv_rincianNoTelepon)
+                            .addComponent(tf_rincianNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         getContentPane().add(panel_data_tamu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, 650));
@@ -257,29 +485,105 @@ public class Tamu extends javax.swing.JInternalFrame {
 
     private void tb_tamuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_tamuMouseClicked
         // TODO add your handling code here:
+        setVisibleComponents(true);
+        int baris = tb_tamu.rowAtPoint(evt.getPoint());
+
+        String id = tb_tamu.getValueAt(baris, 1).toString();
+        tf_rincianIdTamu.setText(id);
+        tf_rincianIdTamu.setEditable(false);
+
+        String nama = tb_tamu.getValueAt(baris, 2).toString();
+        tf_rincianNama.setText(nama);
+
+        String alamat = tb_tamu.getValueAt(baris, 3).toString();
+        tf_rincianAlamat.setText(alamat);
+        
+        String noTelepon = tb_tamu.getValueAt(baris, 4).toString();
+        tf_rincianNoTelepon.setText(noTelepon);
+        
       
     }//GEN-LAST:event_tb_tamuMouseClicked
 
-    private void tf_caritamuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_caritamuKeyPressed
+    private void tf_cariTamuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_cariTamuKeyPressed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_tf_caritamuKeyPressed
+       cariData();
+    }//GEN-LAST:event_tf_cariTamuKeyPressed
 
     private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
         // TODO add your handling code here:
-       
+        cariData();
+        if (tf_cariTamu.getText().trim().isEmpty()) {
+            showDataTamu();
+        }
     }//GEN-LAST:event_btn_cariActionPerformed
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        
+        int opsi = JOptionPane.showConfirmDialog(null, "Benarkah anda ingin menghapus Data?");
+        if (opsi == JOptionPane.YES_OPTION)  {
+            try {
+                String sql = "DELETE FROM tamu WHERE id_tamu='"+ tf_rincianIdTamu.getText() +"'";
+                Connection conn = (Connection)Config.configDB();
+                PreparedStatement pstm = conn.prepareStatement(sql);
+                pstm.execute();
+                JOptionPane.showMessageDialog(this, "Hapus Data Berhasil");
+                showDataTamu();
+                setVisibleComponents(false);
+            }
+            catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Data tidak jadi dihapus");
+        }
     }//GEN-LAST:event_btn_hapusActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+        if (tf_rincianNama.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Data Nama Tidak Boleh Kosong");
+        } else
+            if (tf_rincianAlamat.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data Alamat Tidak Boleh Kosong");
+            } else
+                if (tf_rincianNoTelepon.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Data No Telepon Tidak Boleh Kosong");
+                } else {
+                    updateDataTamu();
+                }
+    }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void tf_rincianNamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_rincianNamaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_rincianNamaKeyPressed
+
+    private void tf_rincianAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_rincianAlamatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_rincianAlamatKeyPressed
+
+    private void tf_rincianNoTeleponKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_rincianNoTeleponKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = tf_rincianNoTelepon.getText();
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            tf_rincianNoTelepon.setEditable(false);
+        } else {
+            tf_rincianNoTelepon.setEditable(true);
+        }
+        
+        if (phoneNumber.length() == 12 || phoneNumber.length() == 11) {
+            tf_rincianNoTelepon.setBackground(Color.GREEN);
+        } else {
+            tf_rincianNoTelepon.setBackground(Color.RED);
+        }
+    }//GEN-LAST:event_tf_rincianNoTeleponKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cari;
     private javax.swing.JButton btn_hapus;
     private javax.swing.JPanel btn_tamu;
+    private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -293,6 +597,15 @@ public class Tamu extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panel_data_tamu;
     private javax.swing.JPanel side_panel;
     private javax.swing.JTable tb_tamu;
-    private javax.swing.JTextField tf_caritamu;
+    private javax.swing.JTextField tf_cariTamu;
+    private javax.swing.JTextField tf_rincianAlamat;
+    private javax.swing.JTextField tf_rincianIdTamu;
+    private javax.swing.JTextField tf_rincianNama;
+    private javax.swing.JTextField tf_rincianNoTelepon;
+    private javax.swing.JLabel tv_rincianAlamat;
+    private javax.swing.JLabel tv_rincianDataTamu;
+    private javax.swing.JLabel tv_rincianIdTamu;
+    private javax.swing.JLabel tv_rincianNama;
+    private javax.swing.JLabel tv_rincianNoTelepon;
     // End of variables declaration//GEN-END:variables
 }

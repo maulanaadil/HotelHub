@@ -43,15 +43,15 @@ public class Pegawai extends javax.swing.JInternalFrame {
     }
     
     public void showHint() {
-        tf_idpegawai.setUI(new JTextFieldHintUI("Masukan ID Pegawai..", Color.GRAY));
+        tf_idPegawai.setUI(new JTextFieldHintUI("Masukan ID Pegawai..", Color.GRAY));
         tf_nama.setUI(new JTextFieldHintUI("Masukan Nama..", Color.GRAY));
         tf_alamat.setUI(new JTextFieldHintUI("Masukan Alamat..", Color.GRAY));
-        tf_caripegawai.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+        tf_cariPegawai.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
     }
     
     
     public void clearComponents() {
-        tf_idpegawai.setText("");
+        tf_idPegawai.setText("");
         tf_nama.setText("");
         cb_jk.setSelectedIndex(0);
         tf_alamat.setText("");
@@ -71,7 +71,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
                     jenis_kelamin = "P";
                 }
             
-            String sql = "INSERT INTO pegawai VALUES('"+ tf_idpegawai.getText() +"', '"+ tf_nama.getText() +"', '" + jenis_kelamin + "', '" + tf_alamat.getText() +"')";
+            String sql = "INSERT INTO pegawai VALUES('"+ tf_idPegawai.getText() +"', '"+ tf_nama.getText() +"', '" + jenis_kelamin + "', '" + tf_alamat.getText() +"')";
             
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Success Added");
@@ -120,7 +120,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
     
     public void cariData() {
         DefaultTableModel model = new DefaultTableModel();
-        String cari = tf_caripegawai.getText();
+        String cari = tf_cariPegawai.getText();
         
         model.addColumn("No");
         model.addColumn("ID Pegawai");
@@ -136,7 +136,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT * FROM pegawai WHERE nama LIKE'%"+ tf_caripegawai.getText() +"%'";
+            String sql = "SELECT * FROM pegawai WHERE nama LIKE'%"+ tf_cariPegawai.getText() +"%'";
             
             ResultSet res = state.executeQuery(sql);
             
@@ -158,26 +158,26 @@ public class Pegawai extends javax.swing.JInternalFrame {
     }
     
     public void setVisibleComponent(Boolean b) {
-        tf_idpegawaiupdate.setVisible(b);
-        tf_namaupdate.setVisible(b);
-        tf_alamatupdate.setVisible(b);
-        cb_jkupdate.setVisible(b);
-        tv_rincian_data_pegawai.setVisible(b);
+        tf_idPegawaiUpdate.setVisible(b);
+        tf_namaUpdate.setVisible(b);
+        tf_alamatUpdate.setVisible(b);
+        cb_jkUpdate.setVisible(b);
+        tv_rincianDataPegawai.setVisible(b);
         btn_update.setVisible(b);
         btn_hapus.setVisible(b);
-        tv_rincian_id_pegawaii.setVisible(b);
-        tv_rincian_nama.setVisible(b);
-        tv_rincian_alamat.setVisible(b);
-        tv_rincian_jk.setVisible(b);
+        tv_rincianIdPegawai.setVisible(b);
+        tv_rincianNama.setVisible(b);
+        tv_rincianAlamat.setVisible(b);
+        tv_rincianJk.setVisible(b);
     }
     
     public void updateDataPegawai() {
         try {
-            String sql = "UPDATE pegawai SET id_pegawai='" + tf_idpegawaiupdate.getText() + 
-                    "',nama='" + tf_namaupdate.getText() + 
-                    "',jk='" + cb_jkupdate.getSelectedItem() + 
-                    "',alamat='" + tf_alamatupdate.getText() + 
-                    "' WHERE id_pegawai='" + tf_idpegawaiupdate.getText() + 
+            String sql = "UPDATE pegawai SET id_pegawai='" + tf_idPegawaiUpdate.getText() + 
+                    "',nama='" + tf_namaUpdate.getText() + 
+                    "',jk='" + cb_jkUpdate.getSelectedItem() + 
+                    "',alamat='" + tf_alamatUpdate.getText() + 
+                    "' WHERE id_pegawai='" + tf_idPegawaiUpdate.getText() + 
                     "'";
             Connection conn = (Connection)Config.configDB();
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -208,7 +208,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         panel_form_pegawai = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        tf_idpegawai = new javax.swing.JTextField();
+        tf_idPegawai = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         tf_nama = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -221,22 +221,22 @@ public class Pegawai extends javax.swing.JInternalFrame {
         panel_data_pegawai = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_pegawai = new javax.swing.JTable();
-        tf_caripegawai = new javax.swing.JTextField();
+        tf_cariPegawai = new javax.swing.JTextField();
         btn_cari = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        tv_rincian_data_pegawai = new javax.swing.JLabel();
-        tv_rincian_id_pegawaii = new javax.swing.JLabel();
-        tv_rincian_nama = new javax.swing.JLabel();
-        tv_rincian_jk = new javax.swing.JLabel();
-        tv_rincian_alamat = new javax.swing.JLabel();
-        tf_namaupdate = new javax.swing.JTextField();
-        tf_idpegawaiupdate = new javax.swing.JTextField();
-        tf_alamatupdate = new javax.swing.JTextField();
-        cb_jkupdate = new javax.swing.JComboBox<>();
+        tv_rincianDataPegawai = new javax.swing.JLabel();
+        tv_rincianIdPegawai = new javax.swing.JLabel();
+        tv_rincianNama = new javax.swing.JLabel();
+        tv_rincianJk = new javax.swing.JLabel();
+        tv_rincianAlamat = new javax.swing.JLabel();
+        tf_namaUpdate = new javax.swing.JTextField();
+        tf_idPegawaiUpdate = new javax.swing.JTextField();
+        tf_alamatUpdate = new javax.swing.JTextField();
+        cb_jkUpdate = new javax.swing.JComboBox<>();
         btn_update = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(220, 228, 228));
@@ -376,18 +376,13 @@ public class Pegawai extends javax.swing.JInternalFrame {
         jLabel10.setText("ID Pegawai");
         panel_form_pegawai.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
-        tf_idpegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_idpegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_idpegawaiActionPerformed(evt);
-            }
-        });
-        tf_idpegawai.addKeyListener(new java.awt.event.KeyAdapter() {
+        tf_idPegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_idPegawai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_idpegawaiKeyPressed(evt);
+                tf_idPegawaiKeyPressed(evt);
             }
         });
-        panel_form_pegawai.add(tf_idpegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 350, -1));
+        panel_form_pegawai.add(tf_idPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 350, -1));
 
         jLabel11.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel11.setText("Jenis Kelamin");
@@ -462,6 +457,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
             }
         ));
         tb_pegawai.setGridColor(new java.awt.Color(255, 255, 255));
+        tb_pegawai.getTableHeader().setReorderingAllowed(false);
         tb_pegawai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_pegawaiMouseClicked(evt);
@@ -469,10 +465,10 @@ public class Pegawai extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tb_pegawai);
 
-        tf_caripegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_caripegawai.addKeyListener(new java.awt.event.KeyAdapter() {
+        tf_cariPegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_cariPegawai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_caripegawaiKeyPressed(evt);
+                tf_cariPegawaiKeyPressed(evt);
             }
         });
 
@@ -526,30 +522,30 @@ public class Pegawai extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
         jLabel18.setText("Ketik Nama Pegawai untuk Mencari Data Pegawai:");
 
-        tv_rincian_data_pegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tv_rincian_data_pegawai.setText("Rincian Data Pegawai");
+        tv_rincianDataPegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianDataPegawai.setText("Rincian Data Pegawai");
 
-        tv_rincian_id_pegawaii.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tv_rincian_id_pegawaii.setText("ID Pegawai");
+        tv_rincianIdPegawai.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianIdPegawai.setText("ID Pegawai");
 
-        tv_rincian_nama.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tv_rincian_nama.setText("Nama");
+        tv_rincianNama.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianNama.setText("Nama");
 
-        tv_rincian_jk.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tv_rincian_jk.setText("Jenis Kelamin");
+        tv_rincianJk.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianJk.setText("Jenis Kelamin");
 
-        tv_rincian_alamat.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tv_rincian_alamat.setText("Alamat");
+        tv_rincianAlamat.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tv_rincianAlamat.setText("Alamat");
 
-        tf_namaupdate.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_namaUpdate.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
 
-        tf_idpegawaiupdate.setBackground(new java.awt.Color(234, 246, 248));
-        tf_idpegawaiupdate.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_idPegawaiUpdate.setBackground(new java.awt.Color(234, 246, 248));
+        tf_idPegawaiUpdate.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
 
-        tf_alamatupdate.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
+        tf_alamatUpdate.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
 
-        cb_jkupdate.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
-        cb_jkupdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L", "P" }));
+        cb_jkUpdate.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
+        cb_jkUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L", "P" }));
 
         btn_update.setText("Update");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
@@ -576,25 +572,25 @@ public class Pegawai extends javax.swing.JInternalFrame {
                         .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addGroup(panel_data_pegawaiLayout.createSequentialGroup()
-                                .addComponent(tf_caripegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tf_cariPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(btn_cari))))
                     .addGroup(panel_data_pegawaiLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tv_rincian_data_pegawai)
+                            .addComponent(tv_rincianDataPegawai)
                             .addGroup(panel_data_pegawaiLayout.createSequentialGroup()
                                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tv_rincian_nama)
-                                    .addComponent(tv_rincian_id_pegawaii)
-                                    .addComponent(tv_rincian_jk)
-                                    .addComponent(tv_rincian_alamat))
+                                    .addComponent(tv_rincianNama)
+                                    .addComponent(tv_rincianIdPegawai)
+                                    .addComponent(tv_rincianJk)
+                                    .addComponent(tv_rincianAlamat))
                                 .addGap(29, 29, 29)
                                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_idpegawaiupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_namaupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tf_alamatupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cb_jkupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(tf_idPegawaiUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_namaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_alamatUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_jkUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(panel_data_pegawaiLayout.createSequentialGroup()
                 .addContainerGap()
@@ -609,7 +605,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_caripegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_cariPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cari))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,23 +614,23 @@ public class Pegawai extends javax.swing.JInternalFrame {
                     .addComponent(btn_hapus)
                     .addComponent(btn_update))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tv_rincian_data_pegawai)
+                .addComponent(tv_rincianDataPegawai)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tv_rincian_id_pegawaii)
-                    .addComponent(tf_idpegawaiupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tv_rincianIdPegawai)
+                    .addComponent(tf_idPegawaiUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tv_rincian_nama)
-                    .addComponent(tf_namaupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tv_rincianNama)
+                    .addComponent(tf_namaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tv_rincian_jk)
-                    .addComponent(cb_jkupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tv_rincianJk)
+                    .addComponent(cb_jkUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_data_pegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tv_rincian_alamat)
-                    .addComponent(tf_alamatupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tv_rincianAlamat)
+                    .addComponent(tf_alamatUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -672,21 +668,21 @@ public class Pegawai extends javax.swing.JInternalFrame {
         clearComponents();
     }//GEN-LAST:event_btn_resetActionPerformed
 
-    private void tf_idpegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_idpegawaiKeyPressed
+    private void tf_idPegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_idPegawaiKeyPressed
         // TODO add your handling code here:
-        String idTamu = tf_idpegawai.getText();
+        String idTamu = tf_idPegawai.getText();
         
         int length = idTamu.length();
         if ( length < 4 ) {
-            tf_idpegawai.setEditable(true);
+            tf_idPegawai.setEditable(true);
         } else 
             if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE ) {
-                tf_idpegawai.setEditable(true);
+                tf_idPegawai.setEditable(true);
             } 
         else {
-            tf_idpegawai.setEditable(false);
+            tf_idPegawai.setEditable(false);
         }
-    }//GEN-LAST:event_tf_idpegawaiKeyPressed
+    }//GEN-LAST:event_tf_idPegawaiKeyPressed
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         // TODO add your handling code here:
@@ -707,14 +703,15 @@ public class Pegawai extends javax.swing.JInternalFrame {
         setVisibleComponent(false);
     }//GEN-LAST:event_btn_cariActionPerformed
 
-    private void tf_caripegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_caripegawaiKeyPressed
+    private void tf_cariPegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_cariPegawaiKeyPressed
         // TODO add your handling code here:
         cariData();
         setVisibleComponent(false);
-        if (tf_caripegawai.getText() == "") {
+        if (!"".equals(tf_cariPegawai.getText())) {
+        } else {
             showDataPegawai();
         }
-    }//GEN-LAST:event_tf_caripegawaiKeyPressed
+    }//GEN-LAST:event_tf_cariPegawaiKeyPressed
 
     private void tb_pegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_pegawaiMouseClicked
         // TODO add your handling code here:
@@ -722,17 +719,17 @@ public class Pegawai extends javax.swing.JInternalFrame {
         int baris = tb_pegawai.rowAtPoint(evt.getPoint());
         
         String id = tb_pegawai.getValueAt(baris, 1).toString();
-        tf_idpegawaiupdate.setText(id);
-        tf_idpegawaiupdate.setEditable(false);
+        tf_idPegawaiUpdate.setText(id);
+        tf_idPegawaiUpdate.setEditable(false);
         
         String nama = tb_pegawai.getValueAt(baris, 2).toString();
-        tf_namaupdate.setText(nama);
+        tf_namaUpdate.setText(nama);
         
         String jenisKelamin = tb_pegawai.getValueAt(baris, 3).toString();
-        cb_jkupdate.setSelectedItem(jenisKelamin);
+        cb_jkUpdate.setSelectedItem(jenisKelamin);
         
         String alamat = tb_pegawai.getValueAt(baris, 4).toString();
-        tf_alamatupdate.setText(alamat);
+        tf_alamatUpdate.setText(alamat);
     }//GEN-LAST:event_tb_pegawaiMouseClicked
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
@@ -740,7 +737,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
         int opsi = JOptionPane.showConfirmDialog(null, "Benarkah anda ingin menghapus Data?");
         if (opsi == JOptionPane.YES_OPTION)  {
             try {
-                String sql = "DELETE FROM pegawai WHERE id_pegawai='"+ tf_idpegawaiupdate.getText() +"'";
+                String sql = "DELETE FROM pegawai WHERE id_pegawai='"+ tf_idPegawaiUpdate.getText() +"'";
                 Connection conn = (Connection)Config.configDB();
                 PreparedStatement pstm = conn.prepareStatement(sql);
                 pstm.execute();
@@ -759,20 +756,16 @@ public class Pegawai extends javax.swing.JInternalFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
-        if (tf_namaupdate.getText().trim().isEmpty()) {
+        if (tf_namaUpdate.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Data Nama Tidak Boleh Kosong");
         } else 
-            if (tf_alamatupdate.getText().trim().isEmpty()) {
+            if (tf_alamatUpdate.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Data Alamat Tidak Boleh Kosong");
             }
             else {
                 updateDataPegawai();
             }
     }//GEN-LAST:event_btn_updateActionPerformed
-
-    private void tf_idpegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idpegawaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_idpegawaiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -784,7 +777,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
     private javax.swing.JPanel btn_tambah;
     private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> cb_jk;
-    private javax.swing.JComboBox<String> cb_jkupdate;
+    private javax.swing.JComboBox<String> cb_jkUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -808,16 +801,16 @@ public class Pegawai extends javax.swing.JInternalFrame {
     private javax.swing.JPanel side_panel;
     private javax.swing.JTable tb_pegawai;
     private javax.swing.JTextField tf_alamat;
-    private javax.swing.JTextField tf_alamatupdate;
-    private javax.swing.JTextField tf_caripegawai;
-    private javax.swing.JTextField tf_idpegawai;
-    private javax.swing.JTextField tf_idpegawaiupdate;
+    private javax.swing.JTextField tf_alamatUpdate;
+    private javax.swing.JTextField tf_cariPegawai;
+    private javax.swing.JTextField tf_idPegawai;
+    private javax.swing.JTextField tf_idPegawaiUpdate;
     private javax.swing.JTextField tf_nama;
-    private javax.swing.JTextField tf_namaupdate;
-    private javax.swing.JLabel tv_rincian_alamat;
-    private javax.swing.JLabel tv_rincian_data_pegawai;
-    private javax.swing.JLabel tv_rincian_id_pegawaii;
-    private javax.swing.JLabel tv_rincian_jk;
-    private javax.swing.JLabel tv_rincian_nama;
+    private javax.swing.JTextField tf_namaUpdate;
+    private javax.swing.JLabel tv_rincianAlamat;
+    private javax.swing.JLabel tv_rincianDataPegawai;
+    private javax.swing.JLabel tv_rincianIdPegawai;
+    private javax.swing.JLabel tv_rincianJk;
+    private javax.swing.JLabel tv_rincianNama;
     // End of variables declaration//GEN-END:variables
 }
