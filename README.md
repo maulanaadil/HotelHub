@@ -3,7 +3,12 @@
 Project untuk memenuhi tugas besar Pemograman Visual GUI.
 
 ## Rule
-Use JDK Version 14 or Below
+- Use JDK Version 14 or Below
+
+## Install Libraries
+- Jtattoo 1.6.11
+- JCalendar 1.4
+- Mysql JDBC Driver 
 
 ## Guide
 Recommend Tool Use Netbeans
