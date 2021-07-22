@@ -224,6 +224,11 @@ public class FormReservasi extends javax.swing.JInternalFrame {
 
         cb_idKamar.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
         cb_idKamar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Kamar" }));
+        cb_idKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_idKamarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel7.setText("Tanggal Check Out");
@@ -336,6 +341,10 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         addDataReservasi();
     }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void cb_idKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_idKamarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_idKamarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

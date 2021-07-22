@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="e4" green="e4" red="dc" type="rgb"/>
@@ -19,7 +19,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,86,0,0,3,-122"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-109,0,0,3,-91"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -194,38 +194,40 @@
                           <Component id="btn_cari" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="118" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tv_rincianDataTamu" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="tv_rincianDataReservasi" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_update" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_hapus" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="tv_rincianNama" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="tv_rincianIdTamu" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="tv_rincianAlamat" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="tv_rincianNoTelepon" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_rincianIdReservasi" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_rincianIdKamar" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_rincianCheckIn" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="tv_rincianCheckOut" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_rincianIdTamu" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                              <Component id="tf_rincianNama" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="tf_rincianAlamat" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="tf_rincianNoTelepon" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="date_rincianCheckIn" min="-2" pref="303" max="-2" attributes="0"/>
+                              <Component id="tf_rincianIdReservasi" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="date_rincianCheckOut" min="-2" pref="303" max="-2" attributes="0"/>
+                              <Component id="cb_rincianIdKamar" alignment="0" min="-2" pref="292" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btn_update" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btn_hapus" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -244,38 +246,38 @@
                   <Component id="jScrollPane1" min="-2" pref="205" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="tv_rincianDataReservasi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tv_rincianIdReservasi" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_rincianIdReservasi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_hapus" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_update" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="tv_rincianDataTamu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tv_rincianIdTamu" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_rincianIdTamu" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tv_rincianNama" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_rincianNama" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tv_rincianAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_rincianAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tv_rincianNoTelepon" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_rincianNoTelepon" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
-                  <EmptySpace pref="111" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tv_rincianIdKamar" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_rincianIdKamar" min="-2" pref="24" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tv_rincianCheckIn" min="-2" max="-2" attributes="0"/>
+                      <Component id="date_rincianCheckIn" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tv_rincianCheckOut" min="-2" max="-2" attributes="0"/>
+                      <Component id="date_rincianCheckOut" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="112" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -294,12 +296,15 @@
                   <Font name="Quicksand Medium" size="12" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="15">
+                  <Table columnCount="9" rowCount="15">
                     <Column editable="true" title="No" type="java.lang.Object"/>
+                    <Column editable="true" title="ID Reservasi" type="java.lang.Object"/>
                     <Column editable="true" title="Atas Nama" type="java.lang.Object"/>
+                    <Column editable="true" title="ID Kamar" type="java.lang.Object"/>
                     <Column editable="true" title="Tipe Kamar" type="java.lang.Object"/>
                     <Column editable="true" title="Check In" type="java.lang.Object"/>
                     <Column editable="true" title="Check Out" type="java.lang.Object"/>
+                    <Column editable="true" title="ID Pegawai" type="java.lang.Object"/>
                     <Column editable="true" title="Dilayani" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -320,7 +325,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -330,7 +335,22 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -448,23 +468,23 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_updateActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincianDataTamu">
+        <Component class="javax.swing.JLabel" name="tv_rincianDataReservasi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Rincian Data Tamu"/>
+            <Property name="text" type="java.lang.String" value="Rincian Data Reservasi"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincianIdTamu">
+        <Component class="javax.swing.JLabel" name="tv_rincianIdReservasi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ID Tamu"/>
+            <Property name="text" type="java.lang.String" value="ID Reservasi"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_rincianIdTamu">
+        <Component class="javax.swing.JTextField" name="tf_rincianIdReservasi">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f8" green="f6" red="ea" type="rgb"/>
@@ -473,60 +493,61 @@
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_rincianIdReservasiActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincianNama">
+        <Component class="javax.swing.JLabel" name="tv_rincianIdKamar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nama"/>
+            <Property name="text" type="java.lang.String" value="ID Kamar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_rincianNama">
+        <Component class="javax.swing.JLabel" name="tv_rincianCheckIn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Quicksand SemiBold" size="12" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Check In"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="tv_rincianCheckOut">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Quicksand SemiBold" size="12" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Check Out"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="date_rincianCheckIn">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="date_rincianCheckOut">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cb_rincianIdKamar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Quicksand Medium" size="14" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="Pilih ID Kamar"/>
+              </StringArray>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_rincianNamaKeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_rincianIdKamarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincianAlamat">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Quicksand SemiBold" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Alamat"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_rincianAlamat">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Quicksand SemiBold" size="12" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_rincianAlamatKeyPressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="tv_rincianNoTelepon">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Quicksand SemiBold" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="No Telepon"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_rincianNoTelepon">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Quicksand SemiBold" size="12" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_rincianNoTeleponKeyPressed"/>
-          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
