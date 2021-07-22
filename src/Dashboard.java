@@ -17,9 +17,9 @@ import service.Ruangan;
 import service.Tamu;
 
 
-public class MainFrame extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame {
 
-    public MainFrame() {
+    public Dashboard() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
     }
