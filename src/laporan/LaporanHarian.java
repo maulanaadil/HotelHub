@@ -456,6 +456,7 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
         // TODO add your handling code here:
         showDataLaporan();
+        tf_cariLaporan.setText("");
        
     }//GEN-LAST:event_btn_refreshActionPerformed
 
