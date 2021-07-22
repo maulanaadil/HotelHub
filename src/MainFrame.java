@@ -361,20 +361,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuLaporanActionPerformed
 
 
-    public static void main(String args[]) {
-        try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
-            SwingUtilities.updateComponentTreeUI(new MainFrame());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error Karena : " + e);
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
