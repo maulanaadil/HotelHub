@@ -3,7 +3,7 @@
 Project untuk memenuhi tugas besar Pemograman Visual GUI.
 
 ## Rule
-- Use JDK Version 14 or Below
+- Use JDK Version 14 or Above
 
 ## Install Libraries
 - Jtattoo 1.6.11
