@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import laporan.LaporanHarian;
 import service.Pegawai;
 import service.Pembayaran;
 import service.Reservasi;
@@ -164,6 +165,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         menuLaporan.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         menuLaporan.setText("Laporan Harian");
+        menuLaporan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLaporanActionPerformed(evt);
+            }
+        });
         menuPengaturan1.add(menuLaporan);
 
         jMenuBar1.add(menuPengaturan1);
@@ -334,6 +340,25 @@ public class MainFrame extends javax.swing.JFrame {
         reservasi.setIconifiable(true);
         reservasi.setClosable(true);
     }//GEN-LAST:event_menuServiceDataReservasiActionPerformed
+
+    private void menuLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLaporanActionPerformed
+        // TODO add your handling code here:
+        
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        LaporanHarian laporan = new LaporanHarian();
+        Dimension layarUtama = this.getSize();
+        Dimension layarLaporan = laporan.getSize();
+        
+        laporan.setLocation(layarUtama.width/2 - layarLaporan.width/2, layarUtama.height/2-layarLaporan.height/2);
+        
+        mainPanel.add(laporan);
+        laporan.setVisible(true);
+        laporan.setIconifiable(true);
+        laporan.setClosable(true);
+    }//GEN-LAST:event_menuLaporanActionPerformed
 
 
     public static void main(String args[]) {
