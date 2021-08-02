@@ -10,9 +10,18 @@ import javax.swing.JOptionPane;
 
 
 public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
-
+    private String hintIdTamu;
+    private String hintNama;
+    private String hintAlamat;
+    private String hintNoTelepon;
    
     public FormPendaftaranTamu() {
+        hintIdTamu = "Masukan ID Tamu..";
+        hintNama = "Masukan Nama..";
+        hintAlamat = "Masukan Alamat..";
+        hintNoTelepon = "Masukan Alamat..";
+        
+        
         initComponents();
         showHint();
     }    
@@ -33,7 +42,7 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
         }
     }
     
-    public void clearComponents() {
+    private void clearComponents() {
         tf_idTamu.setText("");
         tf_nama.setText("");
         tf_alamat.setText("");
@@ -41,11 +50,12 @@ public class FormPendaftaranTamu extends javax.swing.JInternalFrame {
         tf_noTelepon.setBackground(Color.WHITE);
     }
     
-    public void showHint() {
-        tf_idTamu.setUI(new JTextFieldHintUI("Masukan ID Tamu..", Color.GRAY));
-        tf_nama.setUI(new JTextFieldHintUI("Masukan Nama..", Color.GRAY));
-        tf_alamat.setUI(new JTextFieldHintUI("Masukan Alamat..", Color.GRAY));
-        tf_noTelepon.setUI(new JTextFieldHintUI("Masukan Nomor Telepon..", Color.GRAY));
+    private void showHint() {     
+        
+        tf_idTamu.setUI(new JTextFieldHintUI(hintIdTamu, Color.GRAY));
+        tf_nama.setUI(new JTextFieldHintUI(hintNama, Color.GRAY));
+        tf_alamat.setUI(new JTextFieldHintUI(hintAlamat, Color.GRAY));
+        tf_noTelepon.setUI(new JTextFieldHintUI(hintNoTelepon, Color.GRAY));
     }
    
     @SuppressWarnings("unchecked")

@@ -11,9 +11,12 @@ import javax.swing.JOptionPane;
 
 
 public class FormReservasi extends javax.swing.JInternalFrame {
+    private String hintTamu;
 
    
     public FormReservasi() {
+        hintTamu = "Masukan ID Tamu..";
+        
         initComponents();
         showNamaTamu();
         showIDKamar();
@@ -21,13 +24,21 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         showHint();
     }
     
-    public void showHint() {
-        tf_tamu.setUI(new JTextFieldHintUI("Masukan ID Tamu..", Color.GRAY));
+    private void showHint() {
+        tf_tamu.setUI(new JTextFieldHintUI(hintTamu, Color.GRAY));
     }
     
-    public void disableTextField() {
+    private void disableTextField() {
         tf_tamu.setEditable(false);
         tf_tamu.setBackground(new Color(234,246,248,255));
+    }
+    
+    private void clearComponents() {
+        cb_nama.setSelectedIndex(0);
+        tf_tamu.setText("");
+        date_checkIn.setDate(null);
+        date_checkOut.setDate(null);
+        cb_idKamar.setSelectedIndex(0);
     }
     
     public void showNamaTamu() {
@@ -36,7 +47,7 @@ public class FormReservasi extends javax.swing.JInternalFrame {
 
             Statement state = conn.createStatement();
             
-            String sql = "SELECT nama FROM tamu ORDER BY id_tamu ASC";
+            String sql = "CALL showNamaTamu()";
             
             ResultSet rs = state.executeQuery(sql);
             
@@ -80,7 +91,7 @@ public class FormReservasi extends javax.swing.JInternalFrame {
 
             Statement state = conn.createStatement();
             
-            String sql = "SELECT id_room FROM room WHERE status = 'kosong' ORDER BY id_room ASC";
+            String sql = "CALL showIDKamar()";
             
             ResultSet rs = state.executeQuery(sql);
             
@@ -130,14 +141,6 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error : " + e);
         }
-    }
-    
-    public void clearComponents() {
-        cb_nama.setSelectedIndex(0);
-        tf_tamu.setText("");
-        date_checkIn.setDate(null);
-        date_checkOut.setDate(null);
-        cb_idKamar.setSelectedIndex(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -224,11 +227,6 @@ public class FormReservasi extends javax.swing.JInternalFrame {
 
         cb_idKamar.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
         cb_idKamar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Kamar" }));
-        cb_idKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_idKamarActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Quicksand Medium", 1, 14)); // NOI18N
         jLabel7.setText("Tanggal Check Out");
@@ -341,10 +339,6 @@ public class FormReservasi extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         addDataReservasi();
     }//GEN-LAST:event_btn_submitActionPerformed
-
-    private void cb_idKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_idKamarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_idKamarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -20,9 +20,11 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class Reservasi extends javax.swing.JInternalFrame {
-
+    private String hintCari;
    
     public Reservasi() {
+        hintCari = "Silahkan Masukan Data yang ingin dicari..";
+        
         initComponents();
         setColor(btn_reservasi);
         showHint();
@@ -31,7 +33,7 @@ public class Reservasi extends javax.swing.JInternalFrame {
         showIDKamar();
     }
     
-    public void setVisibleComponents(Boolean b) {
+    private void setVisibleComponents(Boolean b) {
         btn_hapus.setVisible(b);
         btn_update.setVisible(b);
         tv_rincianDataReservasi.setVisible(b);
@@ -47,17 +49,16 @@ public class Reservasi extends javax.swing.JInternalFrame {
         btn_update.setVisible(b);
     }
     
-    public void showHint() {
-        tf_cariDataReservasi.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+    private void showHint() {
+        tf_cariDataReservasi.setUI(new JTextFieldHintUI(hintCari, Color.GRAY));
     }
     
-     void setColor(JPanel panel) {
+    private void setColor(JPanel panel) {
         panel.setBackground(new Color(179, 201, 201));
     }
      
      public void showDataReservasi() {
-         DefaultTableModel model = new DefaultTableModel();
-        
+        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("No");
         model.addColumn("ID Reservasi");
         model.addColumn("Atas Nama");
@@ -67,12 +68,13 @@ public class Reservasi extends javax.swing.JInternalFrame {
         model.addColumn("Check In");
         model.addColumn("Check Out");
         model.addColumn("Dilayani");
-        
         int no=1;
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT reservasi.id_reservasi as 'IDReservasi', tamu.nama as 'AtasNama', tamu.id_tamu as 'IDTamu', room.id_room as 'IDKamar', room.tipe_room as 'TipeKamar', reservasi.check_in as 'checkIn', reservasi.check_out as 'checkOut', pegawai.nama as 'Dilayani'" +
+            String sql = "SELECT reservasi.id_reservasi as 'IDReservasi', tamu.nama as 'AtasNama', "
+                        + "tamu.id_tamu as 'IDTamu', room.id_room as 'IDKamar', room.tipe_room as 'TipeKamar', "
+                        + "reservasi.check_in as 'checkIn', reservasi.check_out as 'checkOut', pegawai.nama as 'Dilayani'" +
                         " FROM reservasi" +
                         " INNER JOIN" +
                         " tamu ON reservasi.id_tamu = tamu.id_tamu" +
@@ -80,12 +82,8 @@ public class Reservasi extends javax.swing.JInternalFrame {
                         " room ON reservasi.id_room = room.id_room" +
                         " INNER JOIN" +
                         " pegawai ON reservasi.id_pegawai = pegawai.id_pegawai";
-            
             ResultSet res = state.executeQuery(sql);
-            
-                    
             while (res.next()) {
-                
                 model.addRow(new Object [] {
                     no++,
                     res.getString(1),
@@ -106,8 +104,7 @@ public class Reservasi extends javax.swing.JInternalFrame {
      }
      
      public void cariData() {
-         DefaultTableModel model = new DefaultTableModel();
-        
+        DefaultTableModel model = new DefaultTableModel();  
         model.addColumn("No");
         model.addColumn("ID Reservasi");
         model.addColumn("Atas Nama");
@@ -117,12 +114,13 @@ public class Reservasi extends javax.swing.JInternalFrame {
         model.addColumn("Check In");
         model.addColumn("Check Out");
         model.addColumn("Dilayani");
-        
         int no=1;
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT reservasi.id_reservasi as 'IDReservasi', tamu.nama as 'AtasNama', tamu.id_tamu as 'IDTamu', room.id_room as 'IDKamar', room.tipe_room as 'TipeKamar', reservasi.check_in as 'checkIn', reservasi.check_out as 'checkOut', pegawai.nama as 'Dilayani'" +
+            String sql = "SELECT reservasi.id_reservasi as 'IDReservasi', tamu.nama as 'AtasNama', "
+                    + "tamu.id_tamu as 'IDTamu', room.id_room as 'IDKamar', room.tipe_room as 'TipeKamar', "
+                    + "reservasi.check_in as 'checkIn', reservasi.check_out as 'checkOut', pegawai.nama as 'Dilayani'" +
                         " FROM reservasi" +
                         " INNER JOIN" +
                         " tamu ON reservasi.id_tamu = tamu.id_tamu" +
@@ -132,11 +130,8 @@ public class Reservasi extends javax.swing.JInternalFrame {
                         " pegawai ON reservasi.id_pegawai = pegawai.id_pegawai" +
                         " WHERE tamu.nama LIKE '%"+ tf_cariDataReservasi.getText() +"%'";
             
-            ResultSet res = state.executeQuery(sql);
-            
-                    
+            ResultSet res = state.executeQuery(sql);       
             while (res.next()) {
-                
                 model.addRow(new Object [] {
                     no++,
                     res.getString(1),
@@ -215,7 +210,7 @@ public class Reservasi extends javax.swing.JInternalFrame {
         btn_reservasi = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        panel_data_tamu = new javax.swing.JPanel();
+        panel_data_reservasi = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_reservasi = new javax.swing.JTable();
         tf_cariDataReservasi = new javax.swing.JTextField();
@@ -244,11 +239,6 @@ public class Reservasi extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Quicksand SemiBold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Reservasi");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -320,7 +310,7 @@ public class Reservasi extends javax.swing.JInternalFrame {
 
         getContentPane().add(side_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 200, 670));
 
-        panel_data_tamu.setBackground(new java.awt.Color(220, 228, 228));
+        panel_data_reservasi.setBackground(new java.awt.Color(220, 228, 228));
 
         tb_reservasi.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         tb_reservasi.setModel(new javax.swing.table.DefaultTableModel(
@@ -423,11 +413,6 @@ public class Reservasi extends javax.swing.JInternalFrame {
 
         tf_rincianIdReservasi.setBackground(new java.awt.Color(234, 246, 248));
         tf_rincianIdReservasi.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_rincianIdReservasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_rincianIdReservasiActionPerformed(evt);
-            }
-        });
 
         tv_rincianIdKamar.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
         tv_rincianIdKamar.setText("ID Kamar");
@@ -444,101 +429,92 @@ public class Reservasi extends javax.swing.JInternalFrame {
 
         cb_rincianIdKamar.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
         cb_rincianIdKamar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Kamar" }));
-        cb_rincianIdKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_rincianIdKamarActionPerformed(evt);
-            }
-        });
 
-        javax.swing.GroupLayout panel_data_tamuLayout = new javax.swing.GroupLayout(panel_data_tamu);
-        panel_data_tamu.setLayout(panel_data_tamuLayout);
-        panel_data_tamuLayout.setHorizontalGroup(
-            panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panel_data_reservasiLayout = new javax.swing.GroupLayout(panel_data_reservasi);
+        panel_data_reservasi.setLayout(panel_data_reservasiLayout);
+        panel_data_reservasiLayout.setHorizontalGroup(
+            panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panel_data_tamuLayout.createSequentialGroup()
+            .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                    .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                         .addComponent(tf_cariDataReservasi, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_cari)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel_data_tamuLayout.createSequentialGroup()
+            .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                         .addComponent(tv_rincianDataReservasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_update)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_hapus)
                         .addGap(57, 57, 57))
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
-                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel_data_reservasiLayout.createSequentialGroup()
+                        .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tv_rincianIdReservasi)
                             .addComponent(tv_rincianIdKamar)
                             .addComponent(tv_rincianCheckIn)
                             .addComponent(tv_rincianCheckOut))
                         .addGap(18, 18, 18)
-                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(date_rincianCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_rincianIdReservasi, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(date_rincianCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_rincianIdKamar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(panel_data_tamuLayout.createSequentialGroup()
+            .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1))
         );
-        panel_data_tamuLayout.setVerticalGroup(
-            panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_data_tamuLayout.createSequentialGroup()
+        panel_data_reservasiLayout.setVerticalGroup(
+            panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_data_reservasiLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_cariDataReservasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cari))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(tv_rincianDataReservasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tv_rincianIdReservasi)
                             .addComponent(tf_rincianIdReservasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                    .addGroup(panel_data_reservasiLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_hapus)
                             .addComponent(btn_update))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tv_rincianIdKamar)
                     .addComponent(cb_rincianIdKamar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tv_rincianCheckIn)
                     .addComponent(date_rincianCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_data_reservasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tv_rincianCheckOut)
                     .addComponent(date_rincianCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panel_data_tamu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, 650));
+        getContentPane().add(panel_data_reservasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MousePressed
 
     private void tb_reservasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_reservasiMouseClicked
         // TODO add your handling code here:
@@ -606,15 +582,6 @@ public class Reservasi extends javax.swing.JInternalFrame {
         updateDataReservasi();
     }//GEN-LAST:event_btn_updateActionPerformed
 
-    private void tf_rincianIdReservasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_rincianIdReservasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_rincianIdReservasiActionPerformed
-
-    private void cb_rincianIdKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_rincianIdKamarActionPerformed
-        // TODO add your handling code here
-    }//GEN-LAST:event_cb_rincianIdKamarActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cari;
     private javax.swing.JButton btn_hapus;
@@ -633,7 +600,7 @@ public class Reservasi extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panel_data_tamu;
+    private javax.swing.JPanel panel_data_reservasi;
     private javax.swing.JPanel side_panel;
     private javax.swing.JTable tb_reservasi;
     private javax.swing.JTextField tf_cariDataReservasi;

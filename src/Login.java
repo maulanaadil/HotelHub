@@ -7,11 +7,16 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 public class Login extends javax.swing.JFrame {
+    
+    private String username;
+    private String password;
 
     public Login() {
+        username = "admin";
+        password = "admin";
         initComponents();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dimension.width/2-this.getSize().width/2, dimension.height/2-this.getSize().height/2);
     }
     
     @SuppressWarnings("unchecked")
@@ -23,7 +28,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cb_showPassword = new javax.swing.JCheckBox();
         btn_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,11 +52,11 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
 
-        jCheckBox1.setFont(new java.awt.Font("Quicksand SemiBold", 1, 10)); // NOI18N
-        jCheckBox1.setText("Show Password");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        cb_showPassword.setFont(new java.awt.Font("Quicksand SemiBold", 1, 10)); // NOI18N
+        cb_showPassword.setText("Show Password");
+        cb_showPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                cb_showPasswordActionPerformed(evt);
             }
         });
 
@@ -72,7 +77,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(cb_showPassword)
                         .addGap(187, 187, 187)
                         .addComponent(btn_login))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -101,21 +106,21 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(btn_login))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(cb_showPassword)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void cb_showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_showPasswordActionPerformed
         // TODO add your handling code here:
-        if (jCheckBox1.isSelected()) {
+        if (cb_showPassword.isSelected()) {
             tf_password.setEchoChar((char)0);
         } else {
             tf_password.setEchoChar('*');
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_cb_showPasswordActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
@@ -127,7 +132,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password Harus Diisi!");
             tf_username.requestFocus();
         } else
-        if(tf_username.getText().contains("admin") && tf_password.getText().contains("admin")) {
+        if(tf_username.getText().contains(username) && tf_password.getText().contains(password)) {
             new Dashboard().show();
         } else {
             JOptionPane.showMessageDialog(null, "Username atau Password salah");
@@ -170,7 +175,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox cb_showPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

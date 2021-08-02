@@ -12,14 +12,28 @@ import javax.swing.JOptionPane;
 
 
 public class FormPembayaran extends javax.swing.JInternalFrame {
+    private String rupiah;
+    private String totalHarga;
+    private String seperator;
 
     
     public FormPembayaran() {
+        rupiah = "Rp. 0.00";
+        totalHarga = "0.00";
+        seperator = "-";
         initComponents();
         showNamaTamu();
         disableTextField();
     }
     
+    private void clearComponents() {
+            cb_nama.setSelectedIndex(0);
+            tf_idTamu.setText("");
+            tv_tipeKamar.setText(seperator);
+            tv_harga.setText(rupiah);
+            tv_pajak.setText(rupiah);
+            tv_totalHarga.setText(totalHarga);
+    }
     
     public void disableTextField() {
         tf_idTamu.setEditable(false);
@@ -392,13 +406,4 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
     private javax.swing.JLabel tv_tipeKamar;
     private javax.swing.JLabel tv_totalHarga;
     // End of variables declaration//GEN-END:variables
-
-    private void clearComponents() {
-            cb_nama.setSelectedIndex(0);
-            tf_idTamu.setText("");
-            tv_tipeKamar.setText("-");
-            tv_harga.setText("Rp. 0.00");
-            tv_pajak.setText("Rp. 0.00");
-            tv_totalHarga.setText("0.00");
-    }
 }

@@ -6,10 +6,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import javax.swing.JInternalFrame;
 import laporan.LaporanHarian;
+import pengaturan.History;
 import service.Pegawai;
 import service.Pembayaran;
 import service.Reservasi;
@@ -18,10 +17,34 @@ import service.Tamu;
 
 
 public class Dashboard extends javax.swing.JFrame {
+    private Dimension layarUtama;
+    private Dimension layarMenu;
+    private FormPendaftaranTamu formPendaftaranTamu;
+    private FormReservasi formReservasi;
+    private FormPembayaran formPembayaran;
+    private Pegawai pegawai;
+    private Ruangan ruangan;
+    private Pembayaran pembayaran;
+    private Tamu tamu;
+    private Reservasi reservasi; 
+    private LaporanHarian laporan;
+    private History history;
 
     public Dashboard() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+    }
+    
+    private void setMenu(JInternalFrame tampilan, Boolean kondisi) {
+        tampilan.setVisible(kondisi);
+        tampilan.setIconifiable(kondisi);
+        tampilan.setClosable(kondisi);
+    }
+    
+    private void clearMenu() {
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }
 
     @SuppressWarnings("unchecked")
@@ -52,11 +75,13 @@ public class Dashboard extends javax.swing.JFrame {
         menuServiceDataTamu = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         menuServiceDataReservasi = new javax.swing.JMenuItem();
-        menuPengaturan1 = new javax.swing.JMenu();
-        menuLaporan = new javax.swing.JMenuItem();
+        menuLaporan = new javax.swing.JMenu();
+        menuLaporanHarian = new javax.swing.JMenuItem();
         menuPengaturan = new javax.swing.JMenu();
         menuPengaturanAboutUs = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        menuPengaturanHistory = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         menuPengaturanKeluar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,19 +185,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         jMenuBar1.add(menuService);
 
-        menuPengaturan1.setText("Laporan");
-        menuPengaturan1.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        menuLaporan.setText("Laporan");
+        menuLaporan.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
 
-        menuLaporan.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
-        menuLaporan.setText("Laporan Harian");
-        menuLaporan.addActionListener(new java.awt.event.ActionListener() {
+        menuLaporanHarian.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
+        menuLaporanHarian.setText("Laporan Harian");
+        menuLaporanHarian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuLaporanActionPerformed(evt);
+                menuLaporanHarianActionPerformed(evt);
             }
         });
-        menuPengaturan1.add(menuLaporan);
+        menuLaporan.add(menuLaporanHarian);
 
-        jMenuBar1.add(menuPengaturan1);
+        jMenuBar1.add(menuLaporan);
 
         menuPengaturan.setText("Pengaturan");
         menuPengaturan.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
@@ -182,7 +207,16 @@ public class Dashboard extends javax.swing.JFrame {
         menuPengaturan.add(menuPengaturanAboutUs);
         menuPengaturan.add(jSeparator7);
 
-        menuPengaturanKeluar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuPengaturanHistory.setText("History");
+        menuPengaturanHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPengaturanHistoryActionPerformed(evt);
+            }
+        });
+        menuPengaturan.add(menuPengaturanHistory);
+        menuPengaturan.add(jSeparator8);
+
+        menuPengaturanKeluar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuPengaturanKeluar.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         menuPengaturanKeluar.setText("Keluar");
         menuPengaturanKeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,17 +251,14 @@ public class Dashboard extends javax.swing.JFrame {
     private void menuFormDaftarTamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormDaftarTamuActionPerformed
         // TODO add your handling code here:
         
-        FormPendaftaranTamu formPendaftaranTamu = new FormPendaftaranTamu();
-        Dimension layarUtama = this.getSize();
-        Dimension layarPendaftaranTamu = formPendaftaranTamu.getSize();
+        formPendaftaranTamu = new FormPendaftaranTamu();
+        layarUtama = this.getSize();
+        layarMenu = formPendaftaranTamu.getSize();
         
-        formPendaftaranTamu.setLocation(layarUtama.width/2 - layarPendaftaranTamu.width/2, layarUtama.height/2-layarPendaftaranTamu.height/2);
+        formPendaftaranTamu.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(formPendaftaranTamu);
-        formPendaftaranTamu.setVisible(true);
-        formPendaftaranTamu.setIconifiable(true);
-        formPendaftaranTamu.setClosable(true);
-        
+        setMenu(formPendaftaranTamu, true);
     }//GEN-LAST:event_menuFormDaftarTamuActionPerformed
 
     private void menuPengaturanKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPengaturanKeluarActionPerformed
@@ -238,127 +269,121 @@ public class Dashboard extends javax.swing.JFrame {
     private void menuFormReservasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormReservasiActionPerformed
         // TODO add your handling code here:
         
-        FormReservasi formReservasi = new FormReservasi();
-        Dimension layarUtama = this.getSize();
-        Dimension layarReservasi = formReservasi.getSize();
+        formReservasi = new FormReservasi();
+        layarUtama = this.getSize();
+        layarMenu = formReservasi.getSize();
         
-        formReservasi.setLocation(layarUtama.width/2 - layarReservasi.width/2, layarUtama.height/2-layarReservasi.height/2);
+        formReservasi.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(formReservasi);
-        formReservasi.setVisible(true);
-        formReservasi.setIconifiable(true);
-        formReservasi.setClosable(true);
+        setMenu(formReservasi, true);
     }//GEN-LAST:event_menuFormReservasiActionPerformed
 
     private void menuFormPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormPembayaranActionPerformed
         // TODO add your handling code here:
         
-        FormPembayaran formPembayaran = new FormPembayaran();
-        Dimension layarUtama = this.getSize();
-        Dimension layarPembayaran = formPembayaran.getSize();
+        formPembayaran = new FormPembayaran();
+        layarUtama = this.getSize();
+        layarMenu = formPembayaran.getSize();
         
-        formPembayaran.setLocation(layarUtama.width/2 - layarPembayaran.width/2, layarUtama.height/2-layarPembayaran.height/2);
+        formPembayaran.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(formPembayaran);
-        formPembayaran.setVisible(true);
-        formPembayaran.setIconifiable(true);
-        formPembayaran.setClosable(true);
-        
+        setMenu(formPembayaran, true);
     }//GEN-LAST:event_menuFormPembayaranActionPerformed
 
     private void menuServiceDataPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataPegawaiActionPerformed
         // TODO add your handling code here:
 
-        Pegawai pegawai = new Pegawai();
-        Dimension layarUtama = this.getSize();
-        Dimension layarPegawai = pegawai.getSize();
+        pegawai = new Pegawai();
+        layarUtama = this.getSize();
+        layarMenu = pegawai.getSize();
         
-        pegawai.setLocation(layarUtama.width/2 - layarPegawai.width/2, layarUtama.height/2-layarPegawai.height/2);
+        pegawai.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(pegawai);
-        pegawai.setVisible(true);
-        pegawai.setIconifiable(true);
-        pegawai.setClosable(true);
+        setMenu(pegawai, true);
     }//GEN-LAST:event_menuServiceDataPegawaiActionPerformed
 
     private void menuServiceDataRuanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataRuanganActionPerformed
         // TODO add your handling code here:
 
-        Ruangan ruangan = new Ruangan();
-        Dimension layarUtama = this.getSize();
-        Dimension layarRuangan = ruangan.getSize();
+        ruangan = new Ruangan();
+        layarUtama = this.getSize();
+        layarMenu = ruangan.getSize();
         
-        ruangan.setLocation(layarUtama.width/2 - layarRuangan.width/2, layarUtama.height/2-layarRuangan.height/2);
+        ruangan.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(ruangan);
-        ruangan.setVisible(true);
-        ruangan.setIconifiable(true);
-        ruangan.setClosable(true);
+        setMenu(ruangan, true);
     }//GEN-LAST:event_menuServiceDataRuanganActionPerformed
 
     private void menuServiceDataPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataPembayaranActionPerformed
         // TODO add your handling code here:
         
-        Pembayaran pembayaran = new Pembayaran();
-        Dimension layarUtama = this.getSize();
-        Dimension layarPembayaran = pembayaran.getSize();
+        pembayaran = new Pembayaran();
+        layarUtama = this.getSize();
+        layarMenu = pembayaran.getSize();
         
-        pembayaran.setLocation(layarUtama.width/2 - layarPembayaran.width/2, layarUtama.height/2-layarPembayaran.height/2);
+        pembayaran.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(pembayaran);
-        pembayaran.setVisible(true);
-        pembayaran.setIconifiable(true);
-        pembayaran.setClosable(true);
+        setMenu(pembayaran, true);
     }//GEN-LAST:event_menuServiceDataPembayaranActionPerformed
 
     private void menuServiceDataTamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataTamuActionPerformed
         // TODO add your handling code here:
         
-        Tamu tamu = new Tamu();
-        Dimension layarUtama = this.getSize();
-        Dimension layarTamu = tamu.getSize();
+        tamu = new Tamu();
+        layarUtama = this.getSize();
+        layarMenu = tamu.getSize();
         
-        tamu.setLocation(layarUtama.width/2 - layarTamu.width/2, layarUtama.height/2-layarTamu.height/2);
+        tamu.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(tamu);
-        tamu.setVisible(true);
-        tamu.setIconifiable(true);
-        tamu.setClosable(true);
+        setMenu(tamu, true);
     }//GEN-LAST:event_menuServiceDataTamuActionPerformed
 
     private void menuServiceDataReservasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuServiceDataReservasiActionPerformed
         // TODO add your handling code here:
         
-        Reservasi reservasi = new Reservasi();
-        Dimension layarUtama = this.getSize();
-        Dimension layarReservasi = reservasi.getSize();
+        reservasi = new Reservasi();
+        layarUtama = this.getSize();
+        layarMenu = reservasi.getSize();
         
-        reservasi.setLocation(layarUtama.width/2 - layarReservasi.width/2, layarUtama.height/2-layarReservasi.height/2);
+        reservasi.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(reservasi);
-        reservasi.setVisible(true);
-        reservasi.setIconifiable(true);
-        reservasi.setClosable(true);
+        setMenu(reservasi, true);
     }//GEN-LAST:event_menuServiceDataReservasiActionPerformed
 
-    private void menuLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLaporanActionPerformed
+    private void menuLaporanHarianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLaporanHarianActionPerformed
         // TODO add your handling code here:
+        clearMenu();
         
-        mainPanel.removeAll();
-        mainPanel.repaint();
-        mainPanel.revalidate();
+        laporan = new LaporanHarian();
+        layarUtama = this.getSize();
+        layarMenu = laporan.getSize();
         
-        LaporanHarian laporan = new LaporanHarian();
-        Dimension layarUtama = this.getSize();
-        Dimension layarLaporan = laporan.getSize();
-        
-        laporan.setLocation(layarUtama.width/2 - layarLaporan.width/2, layarUtama.height/2-layarLaporan.height/2);
+        laporan.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
         
         mainPanel.add(laporan);
-        laporan.setVisible(true);
-        laporan.setIconifiable(true);
-        laporan.setClosable(true);
-    }//GEN-LAST:event_menuLaporanActionPerformed
+        setMenu(laporan, true);
+    }//GEN-LAST:event_menuLaporanHarianActionPerformed
+
+    private void menuPengaturanHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPengaturanHistoryActionPerformed
+        // TODO add your handling code here:
+        clearMenu();
+        
+        history = new History();
+        layarUtama = this.getSize();
+        layarMenu = history.getSize();
+        
+        history.setLocation(layarUtama.width/2 - layarMenu.width/2, layarUtama.height/2-layarMenu.height/2);
+        
+        mainPanel.add(history);
+        setMenu(history, true);        
+    }//GEN-LAST:event_menuPengaturanHistoryActionPerformed
 
 
 
@@ -371,15 +396,17 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JDesktopPane mainPanel;
     private javax.swing.JMenu menuForm;
     private javax.swing.JMenuItem menuFormDaftarTamu;
     private javax.swing.JMenuItem menuFormPembayaran;
     private javax.swing.JMenuItem menuFormReservasi;
-    private javax.swing.JMenuItem menuLaporan;
+    private javax.swing.JMenu menuLaporan;
+    private javax.swing.JMenuItem menuLaporanHarian;
     private javax.swing.JMenu menuPengaturan;
-    private javax.swing.JMenu menuPengaturan1;
     private javax.swing.JMenuItem menuPengaturanAboutUs;
+    private javax.swing.JMenuItem menuPengaturanHistory;
     private javax.swing.JMenuItem menuPengaturanKeluar;
     private javax.swing.JMenu menuService;
     private javax.swing.JMenuItem menuServiceDataPegawai;

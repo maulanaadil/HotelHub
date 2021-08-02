@@ -10,8 +10,11 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class Pembayaran extends javax.swing.JInternalFrame {
+    String hintCari;
     
-    public Pembayaran() {
+    public Pembayaran() {        
+        hintCari = "Silahkan Masukan Data yang ingin dicari..";
+        
         initComponents();
         setColor(btn_pembayaran);
         showHint();
@@ -19,12 +22,12 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         tf_tempData.setVisible(false);
     }
     
-    void setColor(JPanel panel) {
+    private void setColor(JPanel panel) {
         panel.setBackground(new Color(179, 201, 201));
     }
     
-     public void showHint() {
-        tf_cariPembayaran.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+     private void showHint() {
+        tf_cariPembayaran.setUI(new JTextFieldHintUI(hintCari, Color.GRAY));
     }
      
      public void showDataPembayaran() {
@@ -38,7 +41,8 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT id_pembayaran, total_harga, tanggal, tamu.nama AS 'dibayar' FROM pembayaran INNER JOIN tamu ON pembayaran.id_tamu = tamu.id_tamu ORDER BY id_pembayaran ASC";
+            String sql = "SELECT id_pembayaran, total_harga, tanggal, tamu.nama AS 'dibayar' "
+                    + "FROM pembayaran INNER JOIN tamu ON pembayaran.id_tamu = tamu.id_tamu ORDER BY id_pembayaran ASC";
             
             ResultSet res = state.executeQuery(sql);
             
@@ -61,22 +65,21 @@ public class Pembayaran extends javax.swing.JInternalFrame {
      
      public void cariData() {
         DefaultTableModel model = new DefaultTableModel();
-        String cari = tf_cariPembayaran.getText();
-        
+        String cari = tf_cariPembayaran.getText();   
         model.addColumn("ID Pembayaran");
         model.addColumn("Total Harga");
         model.addColumn("Tanggal");
-        model.addColumn("Dibayar Oleh");
-        
+        model.addColumn("Dibayar Oleh");   
         int lengthRow = model.getRowCount();
         for (int n=0; n<lengthRow; n++) {
             model.removeRow(n);
-        }
-        
+        }  
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT id_pembayaran, total_harga, tanggal, tamu.nama AS 'dibayar' FROM pembayaran INNER JOIN tamu ON pembayaran.id_tamu = tamu.id_tamu WHERE tamu.nama LIKE '%"+ tf_cariPembayaran.getText() +"%'";
+            String sql = "SELECT id_pembayaran, total_harga, tanggal, tamu.nama AS 'dibayar' "
+                    + "FROM pembayaran INNER JOIN tamu ON pembayaran.id_tamu = tamu.id_tamu "
+                    + "WHERE tamu.nama LIKE '%"+ tf_cariPembayaran.getText() +"%'";
             
             ResultSet res = state.executeQuery(sql);
                     
@@ -127,11 +130,6 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Quicksand SemiBold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pembayaran");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -345,11 +343,6 @@ public class Pembayaran extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jLabel1MousePressed
-
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
         int opsi = JOptionPane.showConfirmDialog(null, "Benarkah anda ingin menghapus Data?");
@@ -373,7 +366,6 @@ public class Pembayaran extends javax.swing.JInternalFrame {
     private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
         // TODO add your handling code here:
         cariData();
-
     }//GEN-LAST:event_btn_cariActionPerformed
 
     private void tf_cariPembayaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_cariPembayaranKeyPressed

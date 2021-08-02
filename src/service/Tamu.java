@@ -15,8 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class Tamu extends javax.swing.JInternalFrame {
+    private String hintCari;
 
     public Tamu() {
+        hintCari = "Silahkan Masukan Data yang ingin dicari..";
+        
         initComponents();
         setColor(btn_tamu);
         showHint();
@@ -24,17 +27,30 @@ public class Tamu extends javax.swing.JInternalFrame {
         setVisibleComponents(false);
     }
     
-    void setColor(JPanel panel) {
+    private void setColor(JPanel panel) {
         panel.setBackground(new Color(179, 201, 201));
     }
     
-    public void showHint() {
-        tf_cariTamu.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+    private void showHint() {
+        tf_cariTamu.setUI(new JTextFieldHintUI(hintCari, Color.GRAY));
+    }
+    
+    private void setVisibleComponents(Boolean b) {
+        btn_hapus.setVisible(b);
+        btn_update.setVisible(b);
+        tv_rincianDataTamu.setVisible(b);
+        tv_rincianIdTamu.setVisible(b);
+        tv_rincianNama.setVisible(b);
+        tv_rincianAlamat.setVisible(b);
+        tv_rincianNoTelepon.setVisible(b);
+        tf_rincianIdTamu.setVisible(b);
+        tf_rincianNama.setVisible(b);
+        tf_rincianAlamat.setVisible(b);
+        tf_rincianNoTelepon.setVisible(b);
     }
     
     public void showDataTamu() {
-         DefaultTableModel model = new DefaultTableModel();
-        
+        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("No");
         model.addColumn("ID Tamu");
         model.addColumn("Nama");
@@ -45,7 +61,7 @@ public class Tamu extends javax.swing.JInternalFrame {
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT * FROM tamu ORDER BY id_tamu ASC";
+            String sql = "CALL showDataTamu();";
             
             ResultSet res = state.executeQuery(sql);
             
@@ -70,7 +86,6 @@ public class Tamu extends javax.swing.JInternalFrame {
     public void cariData() {
         DefaultTableModel model = new DefaultTableModel();
         String cari = tf_cariTamu.getText();
-        
         model.addColumn("No");
         model.addColumn("ID Tamu");
         model.addColumn("Nama");
@@ -104,20 +119,6 @@ public class Tamu extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error : " + e);
         } 
-    }
-    
-    public void setVisibleComponents(Boolean b) {
-        btn_hapus.setVisible(b);
-        btn_update.setVisible(b);
-        tv_rincianDataTamu.setVisible(b);
-        tv_rincianIdTamu.setVisible(b);
-        tv_rincianNama.setVisible(b);
-        tv_rincianAlamat.setVisible(b);
-        tv_rincianNoTelepon.setVisible(b);
-        tf_rincianIdTamu.setVisible(b);
-        tf_rincianNama.setVisible(b);
-        tf_rincianAlamat.setVisible(b);
-        tf_rincianNoTelepon.setVisible(b);
     }
     
     public void updateDataTamu() {
@@ -180,11 +181,6 @@ public class Tamu extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Quicksand SemiBold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tamu");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -368,21 +364,11 @@ public class Tamu extends javax.swing.JInternalFrame {
         tv_rincianNama.setText("Nama");
 
         tf_rincianNama.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_rincianNama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_rincianNamaKeyPressed(evt);
-            }
-        });
 
         tv_rincianAlamat.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
         tv_rincianAlamat.setText("Alamat");
 
         tf_rincianAlamat.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
-        tf_rincianAlamat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tf_rincianAlamatKeyPressed(evt);
-            }
-        });
 
         tv_rincianNoTelepon.setFont(new java.awt.Font("Quicksand SemiBold", 0, 12)); // NOI18N
         tv_rincianNoTelepon.setText("No Telepon");
@@ -479,10 +465,6 @@ public class Tamu extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MousePressed
-
     private void tb_tamuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_tamuMouseClicked
         // TODO add your handling code here:
         setVisibleComponents(true);
@@ -552,14 +534,6 @@ public class Tamu extends javax.swing.JInternalFrame {
                     updateDataTamu();
                 }
     }//GEN-LAST:event_btn_updateActionPerformed
-
-    private void tf_rincianNamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_rincianNamaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_rincianNamaKeyPressed
-
-    private void tf_rincianAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_rincianAlamatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_rincianAlamatKeyPressed
 
     private void tf_rincianNoTeleponKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_rincianNoTeleponKeyPressed
         // TODO add your handling code here:

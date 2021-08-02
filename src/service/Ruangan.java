@@ -12,8 +12,15 @@ import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 public class Ruangan extends javax.swing.JInternalFrame {
+    private String hintIdRuangan;
+    private String hintHarga;
+    private String hintCari;
     
     public Ruangan() {
+        hintIdRuangan = "Masukan ID Ruangan..";
+        hintHarga = "Masukan Harga..";
+        hintCari = "Silahkan Masukan Data yang ingin dicari..";        
+        
         initComponents();
         showHint();
         showDataRuangan();
@@ -22,15 +29,35 @@ public class Ruangan extends javax.swing.JInternalFrame {
         setVisibleComponents(false);
     }
     
-    void setColor(JPanel panel) {
+    private void setColor(JPanel panel) {
         panel.setBackground(new Color(179, 201, 201));
     }
     
-    void resetColor(JPanel panel) {
+    private void resetColor(JPanel panel) {
         panel.setBackground(new Color(192,212,212));
     }
     
-    public void clearComponents() {
+    private void showHint() {
+        tf_idRuangan.setUI(new JTextFieldHintUI(hintIdRuangan, Color.GRAY));
+        tf_harga.setUI(new JTextFieldHintUI(hintHarga, Color.GRAY));
+        tf_cariRuangan.setUI(new JTextFieldHintUI(hintCari, Color.GRAY));
+    }
+    
+    private void setVisibleComponents(Boolean b) {
+        tf_rincianIdRuangan.setVisible(b);
+        tf_rincianHarga.setVisible(b);
+        cb_rincianTipeRuangan.setVisible(b);
+        cb_rincianStatus.setVisible(b);
+        tv_rincianDataRuangan.setVisible(b);
+        tv_rincianHarga.setVisible(b);
+        tv_rincianIdRuangan.setVisible(b);
+        tv_rincianJk.setVisible(b);
+        tv_rincianStatus.setVisible(b);
+        btn_hapus.setVisible(b);
+        btn_update.setVisible(b);
+    }
+    
+    private void clearComponents() {
         tf_idRuangan.setText("");
         tf_harga.setText("");
         cb_statusRuangan.setSelectedIndex(0);
@@ -44,7 +71,8 @@ public class Ruangan extends javax.swing.JInternalFrame {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
             
-            String sql = "INSERT INTO room(id_room, harga, tipe_room, status) VALUES('"+ tf_idRuangan.getText()+"', '"+ tf_harga.getText() +"', '"+ cb_tipeRuangan.getSelectedIndex()+"', '" + cb_statusRuangan.getSelectedIndex()+"')";
+            String sql = "INSERT INTO room(id_room, harga, tipe_room, status) VALUES('"+ tf_idRuangan.getText()+"', '"+ 
+                    tf_harga.getText() +"', '"+ cb_tipeRuangan.getSelectedIndex()+"', '" + cb_statusRuangan.getSelectedIndex()+"')";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Success Added");
             clearComponents();
@@ -104,9 +132,7 @@ public class Ruangan extends javax.swing.JInternalFrame {
             Statement state = conn.createStatement();
             String sql = "SELECT * FROM room WHERE tipe_room LIKE'%"+ tf_cariRuangan.getText() +"%'";
             
-            ResultSet res = state.executeQuery(sql);
-            
-                    
+            ResultSet res = state.executeQuery(sql);    
             while (res.next()) {
                 model.addRow(new Object [] {
                     res.getString(1),
@@ -140,26 +166,6 @@ public class Ruangan extends javax.swing.JInternalFrame {
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }
-    
-    public void showHint() {
-        tf_idRuangan.setUI(new JTextFieldHintUI("Masukan ID Ruangan..", Color.GRAY));
-        tf_harga.setUI(new JTextFieldHintUI("Masukan Harga..", Color.GRAY));
-        tf_cariRuangan.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
-    }
-    
-    public void setVisibleComponents(Boolean b) {
-        tf_rincianIdRuangan.setVisible(b);
-        tf_rincianHarga.setVisible(b);
-        cb_rincianTipeRuangan.setVisible(b);
-        cb_rincianStatus.setVisible(b);
-        tv_rincianDataRuangan.setVisible(b);
-        tv_rincianHarga.setVisible(b);
-        tv_rincianIdRuangan.setVisible(b);
-        tv_rincianJk.setVisible(b);
-        tv_rincianStatus.setVisible(b);
-        btn_hapus.setVisible(b);
-        btn_update.setVisible(b);
     }
 
     

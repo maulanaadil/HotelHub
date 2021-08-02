@@ -24,30 +24,32 @@ import javax.swing.table.DefaultTableModel;
 
 public class LaporanHarian extends javax.swing.JInternalFrame {
 
-
+    private String hintCari;
+    
     public LaporanHarian() {
+        hintCari = "Silahkan Masukan Data yang ingin dicari..";
+        
         initComponents();
         showDataLaporan();
         showHint();
         resetColor(btn_export);
     }
     
-    void setColor(JPanel panel) {
+    private void setColor(JPanel panel) {
         panel.setBackground(new Color(179, 201, 201));
     }
     
-    void resetColor(JPanel panel) {
+    private void resetColor(JPanel panel) {
         panel.setBackground(new Color(192,212,212));
     }
     
-    public void showHint() {
-        tf_cariLaporan.setUI(new JTextFieldHintUI("Silahkan Masukan Data yang ingin dicari..", Color.GRAY));
+    private void showHint() {
+        tf_cariLaporan.setUI(new JTextFieldHintUI(hintCari, Color.GRAY));
     }
     
     
     public void showDataLaporan() {
-         DefaultTableModel model = new DefaultTableModel();
-        
+        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nama");
         model.addColumn("Tanggal");
         model.addColumn("Dibayar");
@@ -70,11 +72,8 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
                         " JOIN room ON room.id_room=reservasi.id_room" +
                         " JOIN pembayaran ON pembayaran.id_pembayaran=reservasi.id_pembayaran";
             
-            ResultSet res = state.executeQuery(sql);
-            
-                    
+            ResultSet res = state.executeQuery(sql);         
             while (res.next()) {
-                
                 model.addRow(new Object [] {
                     res.getString(1),
                     res.getString(2),
@@ -151,7 +150,7 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
         btn_export = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        panel_data_tamu = new javax.swing.JPanel();
+        panel_data_laporan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_laporan = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -170,11 +169,6 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Quicksand SemiBold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Laporan");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,7 +245,7 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
 
         getContentPane().add(side_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 200, 670));
 
-        panel_data_tamu.setBackground(new java.awt.Color(220, 228, 228));
+        panel_data_laporan.setBackground(new java.awt.Color(220, 228, 228));
 
         tb_laporan.setFont(new java.awt.Font("Quicksand Medium", 0, 12)); // NOI18N
         tb_laporan.setModel(new javax.swing.table.DefaultTableModel(
@@ -278,11 +272,6 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
         ));
         tb_laporan.setGridColor(new java.awt.Color(255, 255, 255));
         tb_laporan.getTableHeader().setReorderingAllowed(false);
-        tb_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_laporanMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tb_laporan);
 
         jPanel1.setBackground(new java.awt.Color(220, 228, 228));
@@ -333,21 +322,21 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout panel_data_tamuLayout = new javax.swing.GroupLayout(panel_data_tamu);
-        panel_data_tamu.setLayout(panel_data_tamuLayout);
-        panel_data_tamuLayout.setHorizontalGroup(
-            panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panel_data_laporanLayout = new javax.swing.GroupLayout(panel_data_laporan);
+        panel_data_laporan.setLayout(panel_data_laporanLayout);
+        panel_data_laporanLayout.setHorizontalGroup(
+            panel_data_laporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panel_data_tamuLayout.createSequentialGroup()
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+            .addGroup(panel_data_laporanLayout.createSequentialGroup()
+                .addGroup(panel_data_laporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_data_laporanLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
-                    .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                    .addGroup(panel_data_laporanLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_data_laporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
-                            .addGroup(panel_data_tamuLayout.createSequentialGroup()
+                            .addGroup(panel_data_laporanLayout.createSequentialGroup()
                                 .addComponent(tf_cariLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_cari)
@@ -356,14 +345,14 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
                         .addGap(0, 108, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panel_data_tamuLayout.setVerticalGroup(
-            panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_data_tamuLayout.createSequentialGroup()
+        panel_data_laporanLayout.setVerticalGroup(
+            panel_data_laporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_data_laporanLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel18)
                 .addGap(9, 9, 9)
-                .addGroup(panel_data_tamuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panel_data_laporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cari)
                     .addComponent(tf_cariLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_refresh))
@@ -372,20 +361,10 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
                 .addContainerGap(268, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panel_data_tamu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, 650));
+        getContentPane().add(panel_data_laporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MousePressed
-
-    private void tb_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_laporanMouseClicked
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_tb_laporanMouseClicked
 
     private void btn_exportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_exportMouseClicked
         // TODO add your handling code here:
@@ -473,7 +452,7 @@ public class LaporanHarian extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panel_data_tamu;
+    private javax.swing.JPanel panel_data_laporan;
     private javax.swing.JPanel side_panel;
     private javax.swing.JTable tb_laporan;
     private javax.swing.JTextField tf_cariLaporan;
