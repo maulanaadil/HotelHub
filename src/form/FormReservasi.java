@@ -68,7 +68,8 @@ public class FormReservasi extends javax.swing.JInternalFrame {
             Connection conn = (Connection) Config.configDB();
             
             Statement state = conn.createStatement();
-            String sql = "SELECT * FROM tamu WHERE nama='"+cb_nama.getSelectedItem()+"'";
+            String sql2 = "SELECT * FROM tamu WHERE nama='"+cb_nama.getSelectedItem()+"'";
+            String sql = "CALL searchNamaTamu('"+ cb_nama.getSelectedItem() +"')";
             
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()) {
@@ -133,7 +134,9 @@ public class FormReservasi extends javax.swing.JInternalFrame {
             String checkOut = sdf.format(date_checkOut.getDate());
             
             String sql = "INSERT INTO reservasi(id_tamu,  id_room, id_pegawai, check_in, check_out) VALUES('"+tf_tamu.getText() +"' , '"+ cb_idKamar.getSelectedItem() +"', 'P001', '" + checkIn + "', '"+ checkOut +"')";
+            String sql2 = "UPDATE room SET id_tamu ='"+ tf_tamu.getText() +"' WHERE id_room ='"+ cb_idKamar.getSelectedItem() +"'";
             state.executeUpdate(sql);
+            state.executeUpdate(sql2);
             updateStatusKamar();
             JOptionPane.showMessageDialog(null, "Data Success Added!");
             clearComponents();

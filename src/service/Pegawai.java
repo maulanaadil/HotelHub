@@ -148,7 +148,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
         try {
             Connection conn = (Connection) Config.configDB();
             Statement state = conn.createStatement();
-            String sql = "SELECT * FROM pegawai WHERE nama LIKE'%"+ tf_cariPegawai.getText() +"%'";
+            String sql = "CALL searchNamaPegawai('"+ tf_cariPegawai.getText() + "')";
             
             ResultSet res = state.executeQuery(sql);
             

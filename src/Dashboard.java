@@ -33,6 +33,7 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        
     }
     
     private void setMenu(JInternalFrame tampilan, Boolean kondisi) {
