@@ -154,7 +154,13 @@ public class Tamu extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         panel_data_tamu = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_tamu = new javax.swing.JTable();
+        tb_tamu = new javax.swing.JTable()
+        {
+            public boolean isCellEditable(int rowIndex, int colIndex)
+            {
+                return false; //Disallow the editing of any cell
+            }
+        };
         tf_cariTamu = new javax.swing.JTextField();
         btn_cari = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();

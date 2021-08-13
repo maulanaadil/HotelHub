@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="e4" green="e4" red="dc" type="rgb"/>
@@ -133,6 +133,9 @@
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()&#xd;&#xa;{&#xd;&#xa;   public boolean isCellEditable(int rowIndex, int colIndex)&#xd;&#xa;   {&#xd;&#xa;     return false; //Disallow the editing of any cell&#xd;&#xa;   }&#xd;&#xa;};"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

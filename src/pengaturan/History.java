@@ -52,7 +52,13 @@ public class History extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_history = new javax.swing.JTable();
+        tb_history = new javax.swing.JTable()
+        {
+            public boolean isCellEditable(int rowIndex, int colIndex)
+            {
+                return false; //Disallow the editing of any cell
+            }
+        };
 
         setBackground(new java.awt.Color(220, 228, 228));
 

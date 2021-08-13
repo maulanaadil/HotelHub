@@ -127,7 +127,10 @@ public class FormPembayaran extends javax.swing.JInternalFrame {
             String tanggal = sdf.format(cal.getTime());
             
             String sql = "INSERT INTO pembayaran(total_harga,  tanggal, id_tamu) VALUES('"+tv_totalHarga.getText() +"' , '"+ tanggal +"', '" + tf_idTamu.getText() +"')";
+            String sql2 = "UPDATE room SET status='kosong' WHERE id_tamu='"+  tf_idTamu.getText()  +"'";
+            
             state.executeUpdate(sql);
+            state.executeUpdate(sql2);
             
             JOptionPane.showMessageDialog(null, "Data Success Added!");
             clearComponents();
